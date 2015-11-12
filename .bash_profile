@@ -1,10 +1,5 @@
 # call this when I logged in.
 
-# source the users bashrc if it exists
-if [ -f ~/.bashrc ] ; then
-  source ~/.bashrc
-fi
-
 # environmental variables
 export PATH=$PATH:/sbin:/usr/sbin:~/.local/bin	# path
 export LIBRARY_PATH=$LIBRARY_PATH:~/.local/lib	# gcc/g++ lib path
@@ -15,8 +10,8 @@ export EDITOR='/usr/bin/vim'		# visudo
 export LESS='-X -i -P ?f%f:(stdin).  ?lb%lb?L/%L..  [?eEOF:?pb%pb\%..]'
 # locales
 export LANG=ja_JP.UTF8				# char code
-export LC_ALL=ja_JP.UTF8			# char code
-export LC_MESSAGES=ja_JP.UTF8		# char code
+export LC_ALL=	  					# char code
+#export LC_MESSAGES=ja_JP.UTF8		# char code
 # GUIに指定されている場合はunsetすべき
 unset SSH_ASKPASS
 
@@ -28,5 +23,11 @@ unset SSH_ASKPASS
 #export GOPATH=$HOME/prog/go
 #export GOBIN=$GOPATH/bin
 #export PATH=$PATH:$GOROOT/bin:$GOBIN
+
+
+# source the users bashrc if it exists
+if [ -f ~/.bashrc ] ; then
+  source ~/.bashrc
+fi
 
 
