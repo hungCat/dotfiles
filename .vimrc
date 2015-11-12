@@ -317,7 +317,7 @@ inoremap HH <Esc>
 imap <expr><TAB>
 			\ pumvisible() ? "\<C-n>" :
 			\ neosnippet#expandable_or_jumpable() ?
-			\ "\<TAB>" : "\<Plug>(neosnippet_expand_or_jump)"
+			\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>" 
 
 inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
