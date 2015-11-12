@@ -13,9 +13,12 @@ export PAGER=less					# man
 export EDITOR='/usr/bin/vim'		# visudo
 # lessが便利に
 export LESS='-X -i -P ?f%f:(stdin).  ?lb%lb?L/%L..  [?eEOF:?pb%pb\%..]'
-#export LANG=ja_JP.UTF8				# char code
-#export LC_ALL=ja_JP.UTF8			# char code
-#export LC_MESSAGES=ja_JP.UTF8		# char code
+# locales
+export LANG=ja_JP.UTF8				# char code
+export LC_ALL=ja_JP.UTF8			# char code
+export LC_MESSAGES=ja_JP.UTF8		# char code
+# GUIに指定されている場合はunsetすべき
+unset SSH_ASKPASS
 
 # coreファイルを見たい時に、cygwinにもcoreファイルを吐かせる
 #export CYGWIN="error_start=dumper.exe"
