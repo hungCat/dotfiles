@@ -1,5 +1,10 @@
-#!/bin/sh
-ln -sf ~/dotfiles/.bashrc ~/.bashrc
-ln -sf ~/dotfiles/.bash_profile ~/.bash_profile
-ln -sf ~/dotfiles/.bash_aliases ~/.bash_aliases
-ln -sf ~/dotfiles/.vimrc ~/.vimrc
+#!/usr/bin/sh
+
+home_dir=$HOME
+dotfiles_dir=$HOME/dotfiles
+
+for files in `find $dotfiles_dir -name '.*' -printf '%f\n'` ; do
+	if [ $files != ".git" ]; then
+		ln -sf $dotfiles_dir/$files $home_dir/$files
+	fi
+done
