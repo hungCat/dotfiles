@@ -41,15 +41,17 @@ NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
 
 " スニペット補完プラグイン
 NeoBundleLazy 'Shougo/neosnippet.vim', {
-    \ "autoload": {"insert": 1}}
+			\ "autoload": {"insert": 1}}
 " 各種スニペット
 NeoBundleLazy 'Shougo/neosnippet-snippets', {
-    \ "autoload": {"insert": 1}}
+			\ "autoload": {"insert": 1}}
 
 NeoBundle "Shougo/vimproc"
-NeoBundle "Shougo/unite.vim"
-NeoBundle "osyo-manga/unite-quickfix"
-NeoBundle "osyo-manga/shabadou.vim"
+if v:version > 702
+	NeoBundle "Shougo/unite.vim"
+	NeoBundle "osyo-manga/unite-quickfix"
+	NeoBundle "osyo-manga/shabadou.vim"
+endif
 
 " カラースキーム
 NeoBundle 'w0ng/vim-hybrid'
