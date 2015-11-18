@@ -80,9 +80,9 @@ NeoBundleLazy 'vim-jp/cpp-vim', {
 "NeoBundleLazy 'justmao945/vim-clang', {
 "			\ 'autoload' : {'filetypes' :[ 'c', 'cpp' ]}
 "			\ }
-"NeoBundleLazy 'osyo-manga/vim-marching', {
-"			\ 'autoload' : {'filetypes' :[ 'c', 'cpp' ]}
-"			\ }
+NeoBundleLazy 'osyo-manga/vim-marching', {
+			\ 'autoload' : {'filetypes' :[ 'c', 'cpp' ]}
+			\ }
 
 
 " plugin for golang
@@ -343,38 +343,56 @@ command! ReloadVimrc source $MYVIMRC
 " cpp"{{{
 " ----------------------
 
-" filetype=cpp が設定された時に呼ばれる関数
-"Vim で C++ の設定を行う場合はこの関数内で記述する
-function! s:cpp()
+" filetype=c,cpp が設定された時に呼ばれる関数
+"Vim で C/C++ の設定を行う場合はこの関数内で記述する
+function! s:ccpp()
 	" インクルードパスを設定する
 	" gf などでヘッダーファイルを開きたい場合に影響する
-	setlocal path+=/usr/lib/gcc/x86_64-pc-cygwin/4.9.3/include/c++,~/.local/include
-
-	"タブ文字の長さ
-	"setlocal tabstop=4
-	"setlocal shiftwidth=4
-
-	" 空白文字ではなくてタブ文字を使用する
-	"setlocal noexpandtab
-
-	" 括弧を構成する設定に <> を追加する
-	" template<> を多用するのであれば
-	"setlocal matchpairs+=<:>
+	setlocal path+=~/.local/include
+	setlocal path+=/usr/include/c++
 
 	" 最後に定義された include箇所へ移動して挿入モードへ
 	nnoremap <buffer><silent> <Space>ii :execute "?".&include<CR> :noh<CR> o
-
-
 endfunction
 
 
-augroup vimrc-cpp
+augroup vimrc-ccpp
 	autocmd!
-	" filetype=cppが設定された場合に関数を呼ぶ
-	autocmd FileType cpp call s:cpp()
+	" filetype=c,cppが設定された場合に関数を呼ぶ
+	autocmd FileType c call s:ccpp()
+	autocmd FileType cpp call s:ccpp()
 augroup END
 
 
+" vim-marching
+" clang コマンドの設定
+"let g:marching_clang_command = "clang"
+
+" オプションを追加する
+" filetype=cpp に対して設定する場合
+let g:marching#clang_command#options = {
+			\   "cpp" : "-std=c++1y"
+			\}
+
+" インクルードディレクトリのパスを設定
+let g:marching_include_paths = filter(
+			\	split(glob('/usr/include/c++/*'), '\n') +
+			\	split(glob('/usr/include/*/c++/*'), '\n') +
+			\	split(glob('/usr/include/*/'), '\n'),
+			\	'isdirectory(v:val)')
+
+" neocomplete.vim と併用して使用する場合
+"if has('lua')
+	let g:marching_enable_neocomplete = 1
+"endif
+
+" 補完中のワード挿入を禁止
+"imap <buffer> <C-x><C-o> <Plug>(marching_start_omni_complete)
+
+
+
+
+" old clang_completion settings {{{
 
 " " コマンドオプション
 " let g:clang_user_options = '-std=c++11'
@@ -387,9 +405,6 @@ augroup END
 " let g:clang_auto_select = 0
 
 
-
-" old clang_completion settings {{{
-""
 
 " let g:clang_c_options = '' 
 " let g:clang_cpp_options = '-std=c++11 -stdlib=libc++' 

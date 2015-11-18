@@ -1,0 +1,49 @@
+#!/bin/sh
+
+# 自動的にstowするスクリプト
+# 1番目の引数はパッケージ名
+# 2番目以降はconfigureの引数になる
+
+if test $# -ge 1 ; then
+	PACKAGENAME=$1
+	shift
+else
+	PACKAGENAME=$(basename `pwd`)
+	echo '$PACKAGENAME' = $PACKAGENAME [y/n] n:
+	read ans
+	test "$ans" != "y"  && exit
+fi
+
+if [ ! -d $HOME/.local/stow/ ] ; then
+	mkdir -p $HOME/.local/stow/
+fi
+
+echo ====  ./configure --prefix=$HOME/.local/stow/$PACKAGENAME "$@"  =====================
+./configure --prefix=$HOME/.local/stow/$PACKAGENAME "$@"
+
+if test $? = 0; then
+	echo ==== make =======================================================
+	make
+	MAKEERROR=$?
+else
+	echo "Error : ./conifigure --prefix=$HOME/.local/stow/$PACKAGENAME $@"
+	exit
+fi
+
+if test $MAKEERROR = 0; then
+	echo ==== make install prefix=$HOME/.local/stow/"$PACKAGENAME" =====================
+	make install prefix=$HOME/.local/stow/"$PACKAGENAME"
+	MAKEERROR=$?
+else
+	echo "ERROR : make"
+	exit
+fi
+
+if test $MAKEERROR = 0; then
+	echo ==== stow $PACKAGENAME ==========================================
+	cd $HOME/.local/stow
+	stow $PACKAGENAME
+else
+	echo "ERROR : make install prefix=$HOME/.local/stow/$PACKAGENAME"
+	exit
+fi
