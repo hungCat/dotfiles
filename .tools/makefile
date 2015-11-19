@@ -1,9 +1,9 @@
 ### settings for compiling ###
 CC      = g++
-CFLAGS  = -std=c++11 -g -MMD -MP -Wall -Wextra -Winit-self -Wno-unused-parameter -Wfloat-equal
-LDFLAGS = 
-LIBS    = 
-INCLUDE = -I ./include
+CFLAGS  = -std=c++11 -g -MMD -MP -Wall -Wextra -Winit-self -Wno-unused-parameter -Wfloat-equal  
+LDFLAGS = -L${HOME}/.local/lib
+LIBS    = -lntl -lm -lgmp
+INCLUDE = -I${HOME}/.local/include #-I ./include
 
 ### settings for target files ###
 TARGET  = ./bin/$(shell basename `readlink -f .`)
@@ -16,8 +16,8 @@ DEPENDS = $(OBJS:.o=.d)
 
 all: $(TARGET)
 
-$(TARGET): $(OBJS) $(LIBS)
-	$(CC) -o $@ $(OBJS) $(LDFLAGS)
+$(TARGET): $(OBJS) 
+	$(CC) -o $@ $(OBJS) $(LDFLAGS) $(LIBS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp 
 	@if [ ! -d $(OBJ_DIR) ]; then \

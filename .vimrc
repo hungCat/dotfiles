@@ -1,4 +1,5 @@
 set nocompatible	" be iMproved
+
 filetype off        " turn on at last
 
 
@@ -213,6 +214,7 @@ set softtabstop=4	"連続した空白に対してタブキーやバックスペ�
 set autoindent		"改行時に前の行のインデントを継続する
 set smartindent		"改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 set cindent			" C styleのオートインデント
+set cinoptions=:0,N-s,l1,g0,t0,(0,j1,J1
 
 " }}}
 
@@ -358,7 +360,7 @@ endfunction
 
 augroup vimrc-ccpp
 	autocmd!
-	" filetype=c,cppが設定された場合に関数を呼ぶ
+	" filetype=c,cpp,hが設定された場合に関数を呼ぶ
 	autocmd FileType c call s:ccpp()
 	autocmd FileType cpp call s:ccpp()
 augroup END
@@ -474,6 +476,8 @@ if neobundle#is_installed('neocomplete')
 				\ '[^.[:digit:] *\t]\%(\.\|->\)\w*'
 	let g:neocomplete#force_omni_input_patterns.cpp =
 				\ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+	let g:neocomplete#force_omni_input_patterns.h =
+				\ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
 	let g:neocomplete#force_omni_input_patterns.go = '\h\w*\.\?'
 
 
@@ -495,8 +499,12 @@ elseif neobundle#is_installed('neocomplcache')
 		let g:neocomplcache_force_omni_patterns = {}
 	endif
 	let g:neocomplcache_force_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-	let g:neocomplcache_force_omni_patterns.c   = '\%(\.\|->\)\h\w*'
-	let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|::'
+	let g:neocomplcache_force_omni_patterns.c = 
+				\ '[^.[:digit:] *\t]\%(\.\|->\)\w*'
+	let g:neocomplcache_force_omni_patterns.cpp = 
+				\ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+	let g:neocomplcache_force_omni_patterns.h = 
+				\ '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
 	let g:neocomplcache_force_omni_patterns.go = '\h\w*\.\?'
 
 	" heavy features
@@ -657,9 +665,12 @@ let g:syntastic_check_on_wq = 0		"保存して終了時にはチェックしな�
 
 " c++設定"
 let g:syntastic_c_check_header = 1
+let g:syntastic_h_check_header = 1
+let g:syntastic_h_compiler = "g++"
+let g:syntastic_h_compiler_options = "-std=c++11 -Wall -Wextra -Wno-unused-parameter -Winit-self -Wfloat-equal" " 
 let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_compiler = "g++"
-let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Winit-self -Wno-unused-parameter -Wfloat-equal"
+let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wno-unused-parameter -Winit-self -Wfloat-equal" " 
 
 " go設定
 let g:syntastic_go_checkers = ['go', 'golint']
@@ -683,5 +694,4 @@ let g:vimtex_view_general_viewer = 'cygstart'
 
 
 filetype plugin indent on       " restore filetype
-
 
