@@ -71,7 +71,7 @@ NeoBundle 'scrooloose/syntastic'
 " cpp
 " 色
 NeoBundleLazy 'vim-jp/cpp-vim', {
-			\ 'autoload' : {'filetypes' :[ 'cpp' ]}
+			\ 'autoload' : {'filetypes' :[ 'cpp', 'h' ]}
 			\ }
 " code complete
 "NeoBundleLazy 'Rip-Rip/clang_complete', {
@@ -82,7 +82,12 @@ NeoBundleLazy 'vim-jp/cpp-vim', {
 "			\ 'autoload' : {'filetypes' :[ 'c', 'cpp' ]}
 "			\ }
 NeoBundleLazy 'osyo-manga/vim-marching', {
-			\ 'autoload' : {'filetypes' :[ 'c', 'cpp' ]}
+			\ 'autoload' : {'filetypes' :[ 'c', 'cpp', 'h' ]}
+			\ }
+
+" clang format
+NeoBundleLazy 'rhysd/vim-clang-format', {
+			\ 'autoload' : {'filetypes' :[ 'c', 'cpp', 'h' ]}
 			\ }
 
 
@@ -355,92 +360,54 @@ function! s:ccpp()
 
 	" 最後に定義された include箇所へ移動して挿入モードへ
 	nnoremap <buffer><silent> <Space>ii :execute "?".&include<CR> :noh<CR> o
+
+	" vim-marching
+	" clang コマンドの設定
+	"let g:marching_clang_command = "clang"
+
+	" オプションを追加する
+	" filetype=cpp に対して設定する場合
+	let g:marching#clang_command#options = {
+				\   "cpp" : "-std=c++1y"
+				\}
+
+	" インクルードディレクトリのパスを設定
+	let g:marching_include_paths = filter(
+				\	split(glob('/usr/include/c++/*'), '\n') +
+				\	split(glob('/usr/include/*/c++/*'), '\n') +
+				\	split(glob('/usr/include/*/'), '\n'),
+				\	'isdirectory(v:val)')
+
+	" neocomplete.vim と併用して使用する場合
+	"if has('lua')
+	let g:marching_enable_neocomplete = 1
+	"endif
+
+	" 補完中のワード挿入を禁止
+	"imap <buffer> <C-x><C-o> <Plug>(marching_start_omni_complete)
+
+
+	" clangformat
+	let g:clang_format#style_options = {
+				\ "AccessModifierOffset" : -4,
+				\ "AllowShortIfStatementsOnASingleLine" : "true",
+				\ "AlwaysBreakTemplateDeclarations" : "true",
+				\ "Standard" : "C++11"}
+	nnoremap <buffer>= :<C-u>ClangFormat<CR>
+	vnoremap <buffer>= :ClangFormat<CR>
+
+
+
+
 endfunction
+
 
 
 augroup vimrc-ccpp
 	autocmd!
 	" filetype=c,cpp,hが設定された場合に関数を呼ぶ
-	autocmd FileType c call s:ccpp()
-	autocmd FileType cpp call s:ccpp()
+	autocmd FileType c, cpp, h call s:ccpp()
 augroup END
-
-
-" vim-marching
-" clang コマンドの設定
-"let g:marching_clang_command = "clang"
-
-" オプションを追加する
-" filetype=cpp に対して設定する場合
-let g:marching#clang_command#options = {
-			\   "cpp" : "-std=c++1y"
-			\}
-
-" インクルードディレクトリのパスを設定
-let g:marching_include_paths = filter(
-			\	split(glob('/usr/include/c++/*'), '\n') +
-			\	split(glob('/usr/include/*/c++/*'), '\n') +
-			\	split(glob('/usr/include/*/'), '\n'),
-			\	'isdirectory(v:val)')
-
-" neocomplete.vim と併用して使用する場合
-"if has('lua')
-	let g:marching_enable_neocomplete = 1
-"endif
-
-" 補完中のワード挿入を禁止
-"imap <buffer> <C-x><C-o> <Plug>(marching_start_omni_complete)
-
-
-
-
-" old clang_completion settings {{{
-
-" " コマンドオプション
-" let g:clang_user_options = '-std=c++11'
-" 
-" let g:clang_use_library = 1
-" let g:clang_library_path = '/usr/lib'
-" 
-" " clang_complete では自動補完を行わない用に設定
-" let g:clang_complete_auto = 0
-" let g:clang_auto_select = 0
-
-
-
-" let g:clang_c_options = '' 
-" let g:clang_cpp_options = '-std=c++11 -stdlib=libc++' 
-" 
-" "" disable auto completion for vim-clang 
-" let g:clang_auto = 0
-" " default 'longest' can not work with neocomplete 
-" let g:clang_c_completeopt = 'menuone,preview' 
-" let g:clang_cpp_completeopt = 'menuone,preview' 
-
-
-" vim-marching
-"" clang コマンドの設定
-"let g:marching_clang_command = "clang.exe"
-"
-"" オプションを追加する
-"" filetype=cpp に対して設定する場合
-"let g:marching#clang_command#options = {
-"			\   "cpp" : "-std=c++11"
-"			\}
-"
-"" インクルードディレクトリのパスを設定
-"let g:marching_include_paths = [
-"			\   "/usr/lib/gcc/x86_64-pc-cygwin/4.9.3/include/c++"
-"			\]
-"
-"" neocomplete.vim と併用して使用する場合
-"let g:marching_enable_neocomplete = 1
-"
-"" 補完中のワード挿入を禁止
-""imap <buffer> <C-x><C-o> <Plug>(marching_start_omni_complete)
-
-
-"}}}
 
 
 "}}}
