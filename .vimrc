@@ -219,7 +219,7 @@ set softtabstop=4	"連続した空白に対してタブキーやバックスペ�
 set autoindent		"改行時に前の行のインデントを継続する
 set smartindent		"改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 set cindent			" C styleのオートインデント
-set cinoptions=:0,N-s,l1,g0,t0,(0,j1,J1
+"set cinoptions=:0,N-s,l1,g0,t0,(0,j1,J1
 
 " }}}
 
@@ -302,8 +302,8 @@ nnoremap <S-k> {
 nnoremap <S-l> $
 " normal modeでも即改行
 nnoremap <CR> A<CR><ESC>
-" ==でインデント整理
-nnoremap == gg=G
+" ==でインデント整理(''で元の位置に戻る)
+nnoremap == gg=G''
 
 " insert mode
 " 入力モード中に素早くjjと入力した場合はESCとみなす
@@ -346,6 +346,15 @@ command! ReloadVimrc source $MYVIMRC
 
 "}}}
 
+" my snippets"{{{
+
+let s:my_snippet = '~/.vim/snippet/'
+let g:neosnippet#snippets_directory = s:my_snippet
+
+
+"}}}
+
+
 
 " cpp"{{{
 " ----------------------
@@ -387,16 +396,6 @@ function! s:ccpp()
 	"imap <buffer> <C-x><C-o> <Plug>(marching_start_omni_complete)
 
 
-	" clangformat
-	let g:clang_format#style_options = {
-				\ "AccessModifierOffset" : -4,
-				\ "AllowShortIfStatementsOnASingleLine" : "true",
-				\ "AlwaysBreakTemplateDeclarations" : "true",
-				\ "Standard" : "C++11"}
-	nnoremap <buffer>= :<C-u>ClangFormat<CR>
-	vnoremap <buffer>= :ClangFormat<CR>
-
-
 
 
 endfunction
@@ -413,7 +412,6 @@ augroup END
 "}}}
 
 
-
 "plugin settings"{{{
 " ----------------------
 
@@ -427,10 +425,11 @@ if neobundle#is_installed('neocomplete')
 	let g:neocomplete#enable_ignore_case = 1
 	let g:neocomplete#enable_smart_case = 1
 	let g:neocomplete#auto_completion_start_length = 2
-	if !exists('g:neocomplete#keyword_patterns')
-		let g:neocomplete#keyword_patterns = {}
-	endif
-	let g:neocomplete#keyword_patterns._ = '\h\w*'
+
+"	if !exists('g:neocomplete#keyword_patterns')
+"		let g:neocomplete#keyword_patterns = {}
+"	endif
+"	let g:neocomplete#keyword_patterns._ = '\h\w*'
 
 	let g:neocomplete#force_overwrite_completefunc = 1
 
@@ -454,10 +453,11 @@ elseif neobundle#is_installed('neocomplcache')
 	let g:neocomplcache_enable_ignore_case = 1
 	let g:neocomplcache_enable_smart_case = 1
 	let g:neocomplcache_auto_completion_start_length = 2
-	if !exists('g:neocomplcache_keyword_patterns')
-		let g:neocomplcache_keyword_patterns = {}
-	endif
-	let g:neocomplcache_keyword_patterns._ = '\h\w*'
+
+"	if !exists('g:neocomplcache_keyword_patterns')
+"		let g:neocomplcache_keyword_patterns = {}
+"	endif
+"	let g:neocomplcache_keyword_patterns._ = '\h\w*'
 
 	let g:neocomplcache_force_overwrite_completefunc=1
 
@@ -648,7 +648,7 @@ let g:syntastic_python_python_exec = '/usr/bin/python3'
 "}}}
 
 
-"" vimtex {{{
+" vimtex {{{
 ""
 let g:vimtex_latexmk_continuous = 1
 let g:vimtex_latexmk_background = 1
@@ -658,6 +658,24 @@ let g:vimtex_latexmk_options = '-pdfdvi'
 let g:vimtex_view_general_viewer = 'cygstart'
 
 " }}}
+
+
+" clangformat"{{{
+let g:clang_format#style_options = {
+			\ "AccessModifierOffset" : -4,
+			\ "AllowShortIfStatementsOnASingleLine" : "true",
+			\ "AlwaysBreakTemplateDeclarations" : "true",
+			\ "IndentCaseLabels" : "false",
+			\ "Standard" : "C++11",
+			\ "TabWidth" : 4,
+			\ "UseTab" : "Always",
+			\ }
+
+nnoremap <buffer>cf :<C-u>ClangFormat<CR>
+vnoremap <buffer>cf :ClangFormat<CR>
+
+"}}}
+
 
 
 filetype plugin indent on       " restore filetype
