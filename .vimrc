@@ -346,14 +346,6 @@ command! ReloadVimrc source $MYVIMRC
 
 "}}}
 
-" my snippets"{{{
-
-let s:my_snippet = '~/.vim/snippet/'
-let g:neosnippet#snippets_directory = s:my_snippet
-
-
-"}}}
-
 
 
 " cpp"{{{
@@ -370,33 +362,6 @@ function! s:ccpp()
 	" 最後に定義された include箇所へ移動して挿入モードへ
 	nnoremap <buffer><silent> <Space>ii :execute "?".&include<CR> :noh<CR> o
 
-	" vim-marching
-	" clang コマンドの設定
-	"let g:marching_clang_command = "clang"
-
-	" オプションを追加する
-	" filetype=cpp に対して設定する場合
-	let g:marching#clang_command#options = {
-				\   "cpp" : "-std=c++1y"
-				\}
-
-	" インクルードディレクトリのパスを設定
-	let g:marching_include_paths = filter(
-				\	split(glob('/usr/include/c++/*'), '\n') +
-				\	split(glob('/usr/include/*/c++/*'), '\n') +
-				\	split(glob('/usr/include/*/'), '\n'),
-				\	'isdirectory(v:val)')
-
-	" neocomplete.vim と併用して使用する場合
-	"if has('lua')
-	let g:marching_enable_neocomplete = 1
-	"endif
-
-	" 補完中のワード挿入を禁止
-	"imap <buffer> <C-x><C-o> <Plug>(marching_start_omni_complete)
-
-
-
 
 endfunction
 
@@ -405,7 +370,9 @@ endfunction
 augroup vimrc-ccpp
 	autocmd!
 	" filetype=c,cpp,hが設定された場合に関数を呼ぶ
-	autocmd FileType c, cpp, h call s:ccpp()
+	autocmd FileType c call s:ccpp()
+	autocmd FileType cpp call s:ccpp()
+	autocmd FileType h call s:ccpp()
 augroup END
 
 
@@ -426,10 +393,10 @@ if neobundle#is_installed('neocomplete')
 	let g:neocomplete#enable_smart_case = 1
 	let g:neocomplete#auto_completion_start_length = 2
 
-"	if !exists('g:neocomplete#keyword_patterns')
-"		let g:neocomplete#keyword_patterns = {}
-"	endif
-"	let g:neocomplete#keyword_patterns._ = '\h\w*'
+	"	if !exists('g:neocomplete#keyword_patterns')
+	"		let g:neocomplete#keyword_patterns = {}
+	"	endif
+	"	let g:neocomplete#keyword_patterns._ = '\h\w*'
 
 	let g:neocomplete#force_overwrite_completefunc = 1
 
@@ -454,10 +421,10 @@ elseif neobundle#is_installed('neocomplcache')
 	let g:neocomplcache_enable_smart_case = 1
 	let g:neocomplcache_auto_completion_start_length = 2
 
-"	if !exists('g:neocomplcache_keyword_patterns')
-"		let g:neocomplcache_keyword_patterns = {}
-"	endif
-"	let g:neocomplcache_keyword_patterns._ = '\h\w*'
+	"	if !exists('g:neocomplcache_keyword_patterns')
+	"		let g:neocomplcache_keyword_patterns = {}
+	"	endif
+	"	let g:neocomplcache_keyword_patterns._ = '\h\w*'
 
 	let g:neocomplcache_force_overwrite_completefunc=1
 
@@ -499,6 +466,33 @@ elseif neobundle#is_installed('neocomplcache')
 endif
 
 " }}}
+
+
+" vim-marching"{{{
+" clang コマンドの設定
+
+" オプションを追加する
+" filetype=cpp に対して設定する場合
+let g:marching#clang_command#options = {
+			\   "cpp" : "-std=c++11"
+			\}
+
+" インクルードディレクトリのパスを設定
+let g:marching_include_paths = filter(
+			\	split(glob('/usr/include/c++/*'), '\n') +
+			\	split(glob('/usr/include/*/c++/*'), '\n') +
+			\	split(glob('/usr/include/*/'), '\n'),
+			\	'isdirectory(v:val)')
+
+" neocomplete.vim と併用して使用する場合
+"if has('lua')
+let g:marching_enable_neocomplete = 1
+"endif
+
+" 補完中のワード挿入を禁止
+imap <buffer> <C-x><C-o> <Plug>(marching_start_omni_complete)
+
+"}}}
 
 
 " lexima.vim 括弧補完"{{{
@@ -676,6 +670,14 @@ vnoremap <buffer>cf :ClangFormat<CR>
 
 "}}}
 
+
+" neosnippet"{{{
+
+let s:my_snippet = '~/.vim/snippet/'
+let g:neosnippet#snippets_directory = s:my_snippet
+
+
+"}}}
 
 
 filetype plugin indent on       " restore filetype
