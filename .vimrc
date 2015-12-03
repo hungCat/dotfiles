@@ -47,7 +47,15 @@ NeoBundleLazy 'Shougo/neosnippet.vim', {
 NeoBundleLazy 'Shougo/neosnippet-snippets', {
 			\ "autoload": {"insert": 1}}
 
-NeoBundle "Shougo/vimproc"
+" 非同期処理
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'gmake -f make_unix.mak',
+      \    },
+      \ }
 if v:version > 702
 	NeoBundle "Shougo/unite.vim"
 	NeoBundle "osyo-manga/unite-quickfix"
@@ -169,10 +177,14 @@ augroup END
 " ---------------------
 syntax on							" 色付き
 set t_Co=256						" 256色対応
-set background=dark					" 正しいカラースキームのために
 "colorscheme default
 "colorscheme jellybeans				" カラースキーム設定
-colorscheme hybrid					" カラースキーム設定
+set background=dark					" 正しいカラースキームのために
+try
+	colorscheme hybrid				" カラースキーム設定
+catch
+	colorscheme default
+endtry
 "highlight LineNr ctermfg=darkgrey
 
 " }}}
@@ -421,7 +433,8 @@ endif
 
 " lexima.vim 括弧補完"{{{
 " ----------------------
-
+	
+if exists('lexima#set_default_rules')
 " 設定リセット(ユーザ定義のルールを消し去って、デフォルトルールを適用)
 " 他プラグインにも影響をきたしそうだからできるだけ上で呼びたい
 " 知らん！下で呼ぶぞ！！！
@@ -472,6 +485,7 @@ call s:add_rule({
 			\])
 "}}}
 
+endif
 
 "}}}
 
