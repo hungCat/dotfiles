@@ -1,7 +1,7 @@
 #!/usr/bin/sh
 
 home_dir=$HOME
-dotfiles_dir=$HOME/dotfiles
+dotfiles_dir=$home_dir/dotfiles
 
 # NeoBundle用のディレクトリの作成
 mkdir -p $dotfiles_dir/.vim/bundle

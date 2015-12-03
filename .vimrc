@@ -68,33 +68,9 @@ NeoBundle 'grep.vim'
 NeoBundle 'scrooloose/syntastic'
 
 
-" cpp
-" 色
-NeoBundleLazy 'vim-jp/cpp-vim', {
-			\ 'autoload' : {'filetypes' :[ 'cpp', 'h' ]}
-			\ }
-" code complete
-"NeoBundleLazy 'Rip-Rip/clang_complete', {
-"			\ 'autoload' : {'filetypes' :[ 'c', 'cpp' ]}
-"			\ }
-
-"NeoBundleLazy 'justmao945/vim-clang', {
-"			\ 'autoload' : {'filetypes' :[ 'c', 'cpp' ]}
-"			\ }
-NeoBundleLazy 'osyo-manga/vim-marching', {
-			\ 'autoload' : {'filetypes' :[ 'c', 'cpp', 'h' ]}
-			\ }
-
-" clang format
-NeoBundleLazy 'rhysd/vim-clang-format', {
-			\ 'autoload' : {'filetypes' :[ 'c', 'cpp', 'h' ]}
-			\ }
 
 
-" plugin for golang
-NeoBundleLazy 'fatih/vim-go', {
-			\"autoload" : {"filetypes" :[ "go" ]}
-			\}
+
 
 " HTML支援
 NeoBundleLazy 'mattn/emmet-vim',{
@@ -145,6 +121,9 @@ NeoBundleCheck
 " NeoBundle end
 " ---------------------
 "}}}
+
+
+" general{{{
 
 
 " display {{{
@@ -347,35 +326,6 @@ command! ReloadVimrc source $MYVIMRC
 "}}}
 
 
-
-" cpp"{{{
-" ----------------------
-
-" filetype=c,cpp が設定された時に呼ばれる関数
-"Vim で C/C++ の設定を行う場合はこの関数内で記述する
-function! s:ccpp()
-	" インクルードパスを設定する
-	" gf などでヘッダーファイルを開きたい場合に影響する
-	setlocal path+=~/.local/include
-	setlocal path+=/usr/include/c++
-
-	" 最後に定義された include箇所へ移動して挿入モードへ
-	nnoremap <buffer><silent> <Space>ii :execute "?".&include<CR> :noh<CR> o
-
-
-endfunction
-
-
-
-augroup vimrc-ccpp
-	autocmd!
-	" filetype=c,cpp,hが設定された場合に関数を呼ぶ
-	autocmd FileType c call s:ccpp()
-	autocmd FileType cpp call s:ccpp()
-	autocmd FileType h call s:ccpp()
-augroup END
-
-
 "}}}
 
 
@@ -468,32 +418,6 @@ endif
 " }}}
 
 
-" vim-marching"{{{
-" clang コマンドの設定
-
-" オプションを追加する
-" filetype=cpp に対して設定する場合
-let g:marching#clang_command#options = {
-			\   "cpp" : "-std=c++11"
-			\}
-
-" インクルードディレクトリのパスを設定
-let g:marching_include_paths = filter(
-			\	split(glob('/usr/include/c++/*'), '\n') +
-			\	split(glob('/usr/include/*/c++/*'), '\n') +
-			\	split(glob('/usr/include/*/'), '\n'),
-			\	'isdirectory(v:val)')
-
-" neocomplete.vim と併用して使用する場合
-"if has('lua')
-let g:marching_enable_neocomplete = 1
-"endif
-
-" 補完中のワード挿入を禁止
-imap <buffer> <C-x><C-o> <Plug>(marching_start_omni_complete)
-
-"}}}
-
 
 " lexima.vim 括弧補完"{{{
 " ----------------------
@@ -559,8 +483,7 @@ if !exists("g:quickrun_config")
 	let g:quickrun_config = {}
 endif
 
-let g:quickrun_config = {
-			\   "_" : {
+let g:quickrun_config._ = {
 			\       "runner" : "vimproc",
 			\       "runner/vimproc/updatetime" : 40,
 			\       'outputter' : 'error',
@@ -575,11 +498,6 @@ let g:quickrun_config = {
 			\       "hook/close_buffer/enable_empty_data" : 1,
 			\       "hook/shabadoubi_touch_henshin/enable" : 1,
 			\       "hook/shabadoubi_touch_henshin/wait" : 20,
-			\   },
-			\   "cpp" : {
-			\		"command": "g++",
-			\		"cmdopt": "-std=c++11",
-			\   }
 			\}
 
 
@@ -624,17 +542,6 @@ let g:syntastic_loc_list_height = 6
 let g:syntastic_check_on_open = 0	"ファイルオープン時にはチェックをしない
 let g:syntastic_check_on_wq = 0		"保存して終了時にはチェックしない
 
-" c++設定"
-let g:syntastic_c_check_header = 1
-let g:syntastic_h_check_header = 1
-let g:syntastic_h_compiler = "g++"
-let g:syntastic_h_compiler_options = "-std=c++11 -Wall -Wextra -Wno-unused-parameter -Winit-self -Wfloat-equal" " 
-let g:syntastic_cpp_check_header = 1
-let g:syntastic_cpp_compiler = "g++"
-let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wno-unused-parameter -Winit-self -Wfloat-equal" " 
-
-" go設定
-let g:syntastic_go_checkers = ['go', 'golint']
 
 " python設定
 let g:syntastic_python_python_exec = '/usr/bin/python3'
@@ -654,23 +561,6 @@ let g:vimtex_view_general_viewer = 'cygstart'
 " }}}
 
 
-" clangformat"{{{
-let g:clang_format#style_options = {
-			\ "AccessModifierOffset" : -4,
-			\ "AllowShortIfStatementsOnASingleLine" : "true",
-			\ "AlwaysBreakTemplateDeclarations" : "true",
-			\ "IndentCaseLabels" : "false",
-			\ "Standard" : "C++11",
-			\ "TabWidth" : 4,
-			\ "UseTab" : "Always",
-			\ }
-
-nnoremap <buffer>cf :<C-u>ClangFormat<CR>
-vnoremap <buffer>cf :ClangFormat<CR>
-
-"}}}
-
-
 " neosnippet"{{{
 
 let s:my_snippet = '~/.vim/snippet/'
@@ -679,6 +569,10 @@ let g:neosnippet#snippets_directory = s:my_snippet
 
 "}}}
 
+"}}}
+
+
 
 filetype plugin indent on       " restore filetype
+
 

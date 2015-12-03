@@ -95,3 +95,5 @@ umask 022
 # coreファイルを作らせないように(情報漏れるんじゃあ＾～)
 ulimit -c 0
 
+# ctrl+s で出力がロックされてしまうのを防ぐ
+stty stop undef
