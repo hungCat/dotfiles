@@ -3,5 +3,3 @@
 	email = hungcat4sheep@gmail.com
 [color]
 	ui = true
-[core]
-	excludesfile = /home/irb002/.gitignore
