@@ -7,7 +7,7 @@ dotfiles_dir=$HOME/dotfiles
 mkdir -p $dotfiles_dir/.vim/bundle
 
 # dotfilesへのシンボリックリンクを貼る
-for files in `find $dotfiles_dir -name '.*' -printf '%f\n'` ; do
+for files in `find $dotfiles_dir -maxdepth 1 -name '.*' -printf '%f\n'` ; do
 	if [ $files != ".git" ]; then
 		ln -sf $dotfiles_dir/$files $home_dir/$files
 	fi
