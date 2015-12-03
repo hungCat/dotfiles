@@ -3,3 +3,5 @@
 	email = hungcat4sheep@gmail.com
 [color]
 	ui = true
+[push]
+	default = simple
