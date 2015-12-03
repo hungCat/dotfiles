@@ -183,7 +183,7 @@ set background=dark					" 正しいカラースキームのために
 try
 	colorscheme hybrid				" カラースキーム設定
 catch
-	colorscheme default
+	colorscheme desert
 endtry
 "highlight LineNr ctermfg=darkgrey
 
