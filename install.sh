@@ -9,7 +9,7 @@ mkdir -p $DOTFILES_DIR/.vim/bundle
 # dotfilesへのシンボリックリンクを貼る
 for file in `find $DOTFILES_DIR -maxdepth 1 -name '.*' -printf '%f\n'` ; do
 	if [ $file != ".git" ]; then
-		ln -sf $DOTFILES_DIR/$file $HOME_DIR/$file
+		ln -vnsf $DOTFILES_DIR/$file $HOME_DIR/$file
 	fi
 done
 
