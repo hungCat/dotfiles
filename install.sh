@@ -21,6 +21,6 @@ if [ ! -e $NEOBUNDLE_DIR ]; then
 	echo 'Clone NeoBundle.'
 	git clone https://github.com/Shougo/neobundle.vim "$NEOBUNDLE_DIR"
 	echo 'Done.'
-	./neoinstall.sh
+	. $DOTFILES_DIR/neoinstall.sh
 fi
 
