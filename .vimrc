@@ -179,9 +179,9 @@ syntax on							" 色付き
 set t_Co=256						" 256色対応
 "colorscheme default
 "colorscheme jellybeans				" カラースキーム設定
-set background=dark					" 正しいカラースキームのために
 try
 	colorscheme hybrid				" カラースキーム設定
+	set background=dark				" 正しいカラースキームのために
 catch
 	colorscheme desert
 endtry
