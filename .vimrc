@@ -31,7 +31,6 @@ if has('vim_starting')
 	set rtp+=$HOME/.vim/bundle/neobundle.vim/
 endif
 call neobundle#begin(expand('~/.vim/bundle'))
-NeoBundleFetch 'Shougo/neobundle.vim'
 
 " ここから NeoBundle でプラグインを設定します
 "
