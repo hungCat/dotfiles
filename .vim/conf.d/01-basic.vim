@@ -19,19 +19,6 @@ set listchars=eol:~,tab:^\ ,extends:>,precedes:<,trail:.
 set title
 set linespace=0		" 行間
 
-" 全角スペースが可視化出来る(colorschemeより前)
-scriptencoding utf-8
-augroup highlightIdeographicSpace
-	autocmd!
-	autocmd Colorscheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
-	autocmd VimEnter,WinEnter * match IdeographicSpace /　/
-augroup END
-
-" そのままペースト
-augroup rawPasting
-	autocmd!
-	autocmd FileType * setlocal formatoptions-=ro
-augroup END
 
 " nyan_modoki
 "let g:nyan_modoki_select_cat_face_number = 2
@@ -44,8 +31,15 @@ augroup END
 " ---------------------
 syntax on							" 色付き
 set t_Co=256						" 256色対応
-"colorscheme default
-"colorscheme jellybeans				" カラースキーム設定
+
+" 全角スペースが可視化出来る(colorschemeより前)
+scriptencoding utf-8
+augroup highlightIdeographicSpace
+	autocmd!
+	autocmd Colorscheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
+	autocmd VimEnter,WinEnter * match IdeographicSpace /　/
+augroup END
+
 try
 	colorscheme hybrid				" カラースキーム設定
 	set background=dark				" 正しいカラースキームのために
@@ -179,18 +173,9 @@ inoremap HH <Esc>
 
 " tabで候補選択
 
-"inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : "\<Tab>"
-" SuperTab like snippets behavior.
-imap <expr><TAB>
-			\ pumvisible() ? "\<C-n>" :
-			\ neosnippet#expandable_or_jumpable() ?
-			\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>" 
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" Plugin key-mappings.  " <C-k>でsnippetの展開
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
 
 "}}}
 
@@ -199,8 +184,8 @@ smap <C-k> <Plug>(neosnippet_expand_or_jump)
 " ----------------------
 
 command! -complete=file -nargs=1 Rightsplit rightbelow vsplit <args>
-command! EditVimrc Rightsplit $MYVIMRC
-command! ReloadVimrc source $MYVIMRC
+command! Ev Rightsplit $MYVIMRC
+command! Rv source $MYVIMRC
 
 "}}}
 

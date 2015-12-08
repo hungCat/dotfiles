@@ -37,8 +37,9 @@ call neobundle#begin()
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " ここから NeoBundle でプラグインを設定します
-"
+
 " Shougo
+
 " omni complete
 " if_luaが有効ならneocompleteを使う
 NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
@@ -61,6 +62,7 @@ NeoBundle 'Shougo/vimproc', {
       \ }
 if v:version > 702
 	NeoBundle "Shougo/unite.vim"
+	NeoBundle "Shougo/vimfiler"
 	NeoBundle "osyo-manga/unite-quickfix"
 	NeoBundle "osyo-manga/shabadou.vim"
 endif

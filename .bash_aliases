@@ -17,7 +17,10 @@ fi
 alias vialias="vim $HOME/.bash_aliases"
 alias vibash="vim $HOME/.bashrc"
 alias vibashp="vim $HOME/.bash_profile"
-alias vivim="vim $HOME/.vimrc"
+#alias vivim="vim $HOME/.vimrc"
+alias vivim="vim $HOME/.vim/conf.d"
+alias vineo="vim $HOME/.vim/conf.d/00-neobundle.vim"
+alias vfiler="vim +VimFiler"
 
 # some more ls aliases
 alias ll='ls -AlFh --show-control-chars'
