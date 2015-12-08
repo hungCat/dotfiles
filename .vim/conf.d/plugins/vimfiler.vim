@@ -18,5 +18,5 @@ augroup vimfiler
 augroup END
 
 " key mapping
-nnoremap t :VimFilerMyExplorer<CR>
+nnoremap <silent>t :VimFilerMyExplorer<CR>
 

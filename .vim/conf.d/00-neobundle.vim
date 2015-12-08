@@ -52,14 +52,16 @@ NeoBundleLazy 'Shougo/neosnippet-snippets', {
 			\ "autoload": {"insert": 1}}
 
 " 非同期処理
-NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'windows' : 'make -f make_mingw32.mak',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'gmake -f make_unix.mak',
-      \    },
-      \ }
+NeoBundle 'Shougo/vimproc.vim', {
+			\   'build' : {
+			\     'windows' : 'tools\\update-dll-mingw',
+			\     'cygwin' : 'make -f make_cygwin.mak',
+			\     'mac' : 'make -f make_mac.mak',
+			\     'linux' : 'make',
+			\     'unix' : 'gmake',
+			\   }
+			\ }
+
 if v:version > 702
 	NeoBundle "Shougo/unite.vim"
 	NeoBundle "Shougo/vimfiler"
