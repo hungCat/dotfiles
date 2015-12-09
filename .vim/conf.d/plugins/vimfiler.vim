@@ -24,7 +24,7 @@ augroup vimfiler
 	" If no files are specified, open vimfiler
 	"autocmd VimEnter * if !argc() | VimFiler | endif
 
-	" press t to return 
+	" press sf to return 
 	autocmd FileType vimfiler nmap <silent><buffer>sf <C-w><C-w>
 
 augroup END
