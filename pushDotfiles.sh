@@ -7,7 +7,9 @@ readonly BEFORE_DIR=$(pwd)
 cd $HOME/dotfiles
 
 gitRemain
-if [ $? != 0 ]; then
+hoge=$?
+echo "$hoge"
+if [ $hoge != 0 ]; then
 	git status
 	confirm "Commit and push these files?"
 	if [ $? = 0 ]; then
