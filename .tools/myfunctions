@@ -12,3 +12,19 @@ function confirm {
     esac
   done
 }
+
+function gitRemain {
+	# Get number of files added to the index (but uncommitted)
+	# expr $(git status --porcelain 2>/dev/null| grep "^M" | wc -l)
+
+	# Get number of files that are uncommitted and not added
+	# expr $(git status --porcelain 2>/dev/null| grep "^ M" | wc -l)
+
+	# Get number of total uncommited files
+	num=expr $(git status --porcelain 2>/dev/null| egrep "^(M| M)" | wc -l)
+	if [ num = 0 ]; then
+		return 0
+	else
+		return 1
+	fi
+}
