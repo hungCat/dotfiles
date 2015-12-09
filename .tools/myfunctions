@@ -24,7 +24,7 @@ function gitRemain {
 	# expr $(git status --porcelain 2>/dev/null| egrep "^(M| M)" | wc -l)
 
 	num=$(git status --porcelain 2>/dev/null| egrep "^(M| M)" | wc -l)
-	if [ num = 0 ]; then
+	if [ $num = 0 ]; then
 		return 0
 	else
 		return 1
