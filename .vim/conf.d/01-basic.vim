@@ -13,6 +13,3 @@
 
 set rtp+=~/.vim
 runtime! conf.d/basic/*.vim
-
-
-

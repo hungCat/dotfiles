@@ -52,3 +52,6 @@ NeoBundle 'sudo.vim'
 " set paste and nopaste automatically
 NeoBundle 'ConradIrwin/vim-bracketed-paste'
 
+" 連続したコマンドの入力補助
+NeoBundle 'kana/vim-submode'
+

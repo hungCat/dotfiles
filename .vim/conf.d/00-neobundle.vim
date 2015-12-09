@@ -21,5 +21,3 @@ filetype plugin indent on       " restore filetype
 " check if NeoBundle plugins have installed
 NeoBundleCheck
 
-" plugins options
-runtime! conf.d/neobundle/plugins/*.vim

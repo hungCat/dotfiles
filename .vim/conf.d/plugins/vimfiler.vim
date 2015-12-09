@@ -25,10 +25,10 @@ augroup vimfiler
 	"autocmd VimEnter * if !argc() | VimFiler | endif
 
 	" press t to return 
-	autocmd FileType vimfiler nmap <silent><buffer>t <C-w><C-w>
+	autocmd FileType vimfiler nmap <silent><buffer>sf <C-w><C-w>
 
 augroup END
 
 " key mapping
-nnoremap <silent>t :VimFilerMyExplorer<CR>
+nnoremap <silent>sf :VimFilerMyExplorer<CR>
 
