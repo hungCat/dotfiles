@@ -22,6 +22,13 @@ alias vivim="vim $HOME/.vim/conf.d"
 alias vineo="vim $HOME/.vim/conf.d/00-neobundle.vim"
 alias vfiler="vim +VimFiler"
 
+# git aliases
+alias gst='git status'
+
+
+
+
+
 # some more ls aliases
 alias ll='ls -AlFh --show-control-chars'
 alias la='ls -CFal'
