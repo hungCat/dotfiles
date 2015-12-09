@@ -1,6 +1,15 @@
-let g:vimfiler_as_default_explorer = 1
 
-" override VimFilerExplorer
+
+" set vimfiler as default explorer
+let g:vimfiler_as_default_explorer = 1
+" sorts directories as top
+let g:vimfiler_directory_display_top = 1
+" set default mode as safe mode
+let g:vimfiler_safe_mode_by_default = 0
+" follow current directory 
+let g:vimfiler_enable_auto_cd = 1
+
+" my explorer
 command! VimFilerMyExplorer VimFiler -buffer-name=explorer -split -simple -winwidth=30 -no-quit
 
 augroup vimfiler
@@ -11,9 +20,12 @@ augroup vimfiler
 
 	" Automatically open vimfiler on start
 	"autocmd VimEnter * VimFilerExplorer
-	
+
 	" If no files are specified, open vimfiler
 	"autocmd VimEnter * if !argc() | VimFiler | endif
+
+	" press t to return 
+	autocmd FileType vimfiler nmap <silent><buffer>t <C-w><C-w>
 
 augroup END
 

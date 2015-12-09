@@ -165,6 +165,7 @@ inoremap hh <Esc>
 inoremap JJ <Esc>
 inoremap KK <Esc>
 inoremap HH <Esc>
+
 " Omni補完をCtrl+Spaceで
 " inoremap <C-Space> <C-x><C-o>
 " inoremap <C-@> <C-x><C-o>
@@ -172,10 +173,11 @@ inoremap HH <Esc>
 
 
 " tabで候補選択
-
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+" windowの切り替え
+nnoremap <Space>w <C-w><C-w>
 
 "}}}
 
