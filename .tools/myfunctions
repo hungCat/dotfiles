@@ -23,10 +23,10 @@ function gitRemain {
 	# Get number of total uncommited files
 	# expr $(git status --porcelain 2>/dev/null| egrep "^(M| M)" | wc -l)
 
-	num=$(expr $(git status --porcelain 2>/dev/null| egrep "^(M| M)" | wc -l))
-	if [ num = 0 ]; then
-		return 0
-	else
+	num=$(git status --porcelain 2>/dev/null| egrep "^(M| M)" | wc -l)
+	if [ num != 0 ]; then
 		return 1
+	else
+		return 0
 	fi
 }
