@@ -8,7 +8,8 @@ let g:clang_format#style_options = {
 			\ "UseTab" : "Always",
 			\ }
 
-nnoremap <buffer>cf :<C-u>ClangFormat<CR>
-vnoremap <buffer>cf :ClangFormat<CR>
+
+nnoremap cf :<C-u>ClangFormat<CR>
+vnoremap cf :ClangFormat<CR>
 
 

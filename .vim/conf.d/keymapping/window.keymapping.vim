@@ -37,18 +37,15 @@ nnoremap sQ :<C-u>bd<CR>
 nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
 nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
 
-" windowの大きさ調整
-call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
-call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
-call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
-call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
-call submode#map('bufmove', 'n', '', '>', '<C-w>>')
-call submode#map('bufmove', 'n', '', '<', '<C-w><')
-call submode#map('bufmove', 'n', '', '+', '<C-w>+')
-call submode#map('bufmove', 'n', '', '-', '<C-w>-')
-
-
-
-
-
+if g:myconfig.is_installed('vim-submode')
+	" windowの大きさ調整
+	call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
+	call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
+	call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
+	call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
+	call submode#map('bufmove', 'n', '', '>', '<C-w>>')
+	call submode#map('bufmove', 'n', '', '<', '<C-w><')
+	call submode#map('bufmove', 'n', '', '+', '<C-w>+')
+	call submode#map('bufmove', 'n', '', '-', '<C-w>-')
+endif
 

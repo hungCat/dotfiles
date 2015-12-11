@@ -24,8 +24,9 @@ alias vfiler="vim +VimFiler"
 
 # git aliases
 alias gst='git status'
-
-
+function gcm() {
+	git commit -m $1
+}
 
 
 
