@@ -1,6 +1,6 @@
 scriptencoding utf-8
 
-" グローバル汚さないマン
+" 絶対グローバル汚さないマン
 let g:myconfig = {}
 
 " プラグインのインストールディレクトリ
