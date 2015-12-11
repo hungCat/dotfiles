@@ -12,8 +12,7 @@ if g:myconfig.is_installed('neobundle.vim')
 	NeoBundleFetch 'Shougo/neobundle.vim'
 
 	" NeoBundle plugins
-	"runtime! conf.d/neobundle/*.vim
-	source ~/.vim/conf.d/neobundle/basic.neobundle.vim
+	runtime! conf.d/neobundle/*.vim
 
 	call neobundle#end()
 
