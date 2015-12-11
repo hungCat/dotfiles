@@ -5,9 +5,6 @@ readonly DOTFILES_DIR="$HOME_DIR/dotfiles"
 readonly BUNDLE_DIR="$DOTFILES_DIR/.vim/bundle"
 readonly NEOBUNDLE_DIR="$BUNDLE_DIR/neobundle.vim"
 
-# NeoBundle用のディレクトリの作成
-mkdir -p $BUNDLE_DIR
-
 # dotfilesへのシンボリックリンクを貼る
 for file in `find $DOTFILES_DIR -maxdepth 1 -name '.*' -printf '%f\n'` ; do
 	if [ $file != ".git" ]; then
@@ -16,11 +13,14 @@ for file in `find $DOTFILES_DIR -maxdepth 1 -name '.*' -printf '%f\n'` ; do
 done
 
 # NeoBundleが無かったらインストール
-if [ ! -e $NEOBUNDLE_DIR ]; then
-	echo ''
-	echo 'Clone NeoBundle.'
-	git clone https://github.com/Shougo/neobundle.vim "$NEOBUNDLE_DIR"
-	echo 'Done.'
-	bash $DOTFILES_DIR/neoinstall.sh
-fi
+# if [ ! -e $NEOBUNDLE_DIR ]; then
+# 	echo ''
+# 	echo 'Clone NeoBundle.'
+# 
+# 	# NeoBundle用のディレクトリの作成
+# 	mkdir -p $BUNDLE_DIR
+# 	git clone https://github.com/Shougo/neobundle.vim "$NEOBUNDLE_DIR"
+# 	echo 'Done.'
+# 	bash $DOTFILES_DIR/neoinstall.sh
+# fi
 
