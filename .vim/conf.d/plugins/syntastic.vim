@@ -14,11 +14,9 @@ let g:syntastic_check_on_wq = 0		"保存して終了時にはチェックしな�
 " c++設定"
 let g:syntastic_c_check_header = 1
 let g:syntastic_h_check_header = 1
-let g:syntastic_h_compiler = "g++"
-let g:syntastic_h_compiler_options = "-std=c++11 -Wall -Wextra -Wno-unused-parameter -Winit-self -Wfloat-equal" " 
 let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_compiler = "g++"
-let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wno-unused-parameter -Winit-self -Wfloat-equal" " 
+let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wno-unused-parameter -Winit-self -Wfloat-equal -wsign-compare" 
 
 
 " go設定

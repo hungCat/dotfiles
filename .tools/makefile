@@ -1,6 +1,6 @@
 ### settings for compiling ###
 CC      = g++
-CFLAGS  = -std=c++11 -g -MMD -MP -O2 -Wall -Wextra -Winit-self -Wno-unused-parameter -Wfloat-equal  
+CFLAGS  = -g -MMD -MP -O2 -std=c++11 -Wall -Wextra -Winit-self -Wno-unused-parameter -Wfloat-equal -wsign-compare
 LDFLAGS = -L${HOME}/.local/lib
 LIBS    = -lntl -lm -lgmp
 INCLUDE = -I${HOME}/.local/include #-I ./include
