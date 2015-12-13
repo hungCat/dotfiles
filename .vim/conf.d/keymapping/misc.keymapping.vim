@@ -11,6 +11,9 @@ inoremap JJ <Esc>
 inoremap KK <Esc>
 inoremap HH <Esc>
 
+" 全バッファ閉じる
+nnoremap qq :qall<CR>
+
 " Omni補完をCtrl+Spaceで
 " inoremap <C-Space> <C-x><C-o>
 " inoremap <C-@> <C-x><C-o>

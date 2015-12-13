@@ -1,16 +1,5 @@
 " Shougo
 
-" omni complete
-" if_luaが有効ならneocompleteを使う
-NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
-
-" スニペット補完プラグイン
-NeoBundleLazy 'Shougo/neosnippet.vim', {
-			\ "autoload": {"insert": 1}}
-" 各種スニペット
-NeoBundleLazy 'Shougo/neosnippet-snippets', {
-			\ "autoload": {"insert": 1}}
-
 " 非同期処理
 NeoBundle 'Shougo/vimproc.vim', {
 			\   'build' : {
@@ -28,6 +17,19 @@ if v:version > 702
 	NeoBundle "osyo-manga/unite-quickfix"
 	NeoBundle "osyo-manga/shabadou.vim"
 endif
+
+
+" omni complete
+" if_luaが有効ならneocompleteを使う
+NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
+
+" スニペット補完プラグイン
+NeoBundleLazy 'Shougo/neosnippet.vim', {
+			\ "autoload": {"insert": 1}}
+" 各種スニペット
+NeoBundleLazy 'Shougo/neosnippet-snippets', {
+			\ "autoload": {"insert": 1}}
+
 
 " カラースキーム
 NeoBundle 'w0ng/vim-hybrid'

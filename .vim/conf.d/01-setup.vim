@@ -1,10 +1,7 @@
 
-
 if has('vim_starting') && !&compatible
 	set nocompatible	" be iMproved
 endif
-
-
 
 
 " プラグインの読み込み

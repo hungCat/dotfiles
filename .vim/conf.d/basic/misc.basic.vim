@@ -68,3 +68,5 @@ set noerrorbells		"エラーメッセージの表示時にビープを鳴らさ�
 "}}}
 
 
+" 高速ターミナル接続を行う
+set ttyfast

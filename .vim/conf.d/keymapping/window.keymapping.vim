@@ -20,12 +20,12 @@ nnoremap so <C-w>_<C-w>|
 " window均等化
 nnoremap sO <C-w>=
 nnoremap s= <C-w>=
-" 忘れた
+" バッファの移動
 nnoremap sN :<C-u>bn<CR>
 nnoremap sP :<C-u>bp<CR>
 " 新規タブ
 nnoremap st :<C-u>tabnew<CR>
-" 忘れた
+" タブ一覧
 nnoremap sT :<C-u>Unite tab<CR>
 " split/vsplit
 nnoremap ss :<C-u>sp<CR>
