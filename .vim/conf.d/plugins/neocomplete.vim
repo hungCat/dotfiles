@@ -1,4 +1,4 @@
-if neobundle#is_installed('neocomplete')
+if ! empty(neobundle#get("neocomplete"))
 
 
 	" Disable AutoComplPop.

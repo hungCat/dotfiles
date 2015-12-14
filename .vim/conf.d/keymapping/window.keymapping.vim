@@ -37,6 +37,8 @@ nnoremap sQ :<C-u>bd<CR>
 nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
 nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
 
+" plugins
+
 if g:myconfig.is_installed('vim-submode')
 	" windowの大きさ調整
 	call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
@@ -49,3 +51,8 @@ if g:myconfig.is_installed('vim-submode')
 	call submode#map('bufmove', 'n', '', '-', '<C-w>-')
 endif
 
+
+if ! empty(neobundle#get("tagbar"))
+  " Map for toggle
+  nnoremap <silent> s<C-]> :TagbarToggle<CR>
+endif

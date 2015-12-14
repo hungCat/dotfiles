@@ -1,6 +1,6 @@
 
 
-if neobundle#is_installed('neocomplcache')
+if ! empty(neobundle#get("neocomplcache"))
 
 	" Disable AutoComplPop.
 	let g:acp_enableAtStartup = 0

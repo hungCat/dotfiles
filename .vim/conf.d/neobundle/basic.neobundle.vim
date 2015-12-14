@@ -21,14 +21,19 @@ endif
 
 " omni complete
 " if_luaが有効ならneocompleteを使う
-NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
+NeoBundleLazy has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache',
+      \  {'autoload' : {'insert' : 1}
+      \}
 
 " スニペット補完プラグイン
-NeoBundleLazy 'Shougo/neosnippet.vim', {
-			\ "autoload": {"insert": 1}}
+NeoBundleLazy 'Shougo/neosnippet.vim',
+      \  {'autoload' : {'insert' : 1}
+      \}
+
 " 各種スニペット
-NeoBundleLazy 'Shougo/neosnippet-snippets', {
-			\ "autoload": {"insert": 1}}
+NeoBundle 'Shougo/neosnippet-snippets',
+      \  {'autoload' : {'insert' : 1}
+      \}
 
 
 " カラースキーム
@@ -56,4 +61,15 @@ NeoBundle 'ConradIrwin/vim-bracketed-paste'
 
 " 連続したコマンドの入力補助
 NeoBundle 'kana/vim-submode'
+
+" プロジェクトのrootディレクトリを探す子
+NeoBundle "airblade/vim-rooter"
+
+" tags自動更新
+NeoBundle 'soramugi/auto-ctags.vim'
+
+" tagsリストを右側に表示
+NeoBundleLazy "majutsushi/tagbar", {
+      \ "autoload": { "commands": ["TagbarToggle"] }}
+
 
