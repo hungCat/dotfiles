@@ -13,26 +13,26 @@ NeoBundle 'Shougo/vimproc.vim', {
 
 if v:version > 702
 	NeoBundle "Shougo/unite.vim"
-	NeoBundle "Shougo/vimfiler"
-	NeoBundle "osyo-manga/unite-quickfix"
+	NeoBundle "Shougo/vimfiler", { 'depends' : ["Shougo/unite.vim"] }
+	NeoBundle "osyo-manga/unite-quickfix", { 'depends' : ["Shougo/unite.vim"] }
 	NeoBundle "osyo-manga/shabadou.vim"
 endif
 
 
 " omni complete
 " if_luaが有効ならneocompleteを使う
-NeoBundleLazy has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache',
-      \  {'autoload' : {'insert' : 1}
+NeoBundleLazy has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache', {
+      \  'autoload' : {'insert' : 1}
       \}
 
 " スニペット補完プラグイン
-NeoBundleLazy 'Shougo/neosnippet.vim',
-      \  {'autoload' : {'insert' : 1}
+NeoBundleLazy 'Shougo/neosnippet.vim', {
+      \  'autoload' : {'insert' : 1}
       \}
 
 " 各種スニペット
-NeoBundle 'Shougo/neosnippet-snippets',
-      \  {'autoload' : {'insert' : 1}
+NeoBundle 'Shougo/neosnippet-snippets', {
+      \  'autoload' : {'insert' : 1}
       \}
 
 
@@ -70,6 +70,7 @@ NeoBundle 'soramugi/auto-ctags.vim'
 
 " tagsリストを右側に表示
 NeoBundleLazy "majutsushi/tagbar", {
-      \ "autoload": { "commands": ["TagbarToggle"] }}
+      \ "autoload": { "commands": ["TagbarToggle"] }
+      \}
 
 
