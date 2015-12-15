@@ -1,5 +1,5 @@
 
-if ! empty(neobundle#get("vim-clang-format.vim"))
+if ! empty(neobundle#get("vim-clang-format"))
 
 	let g:clang_format#style_options = {
 				\ "AccessModifierOffset" : -4,

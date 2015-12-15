@@ -19,15 +19,3 @@ nnoremap qq :qall<CR>
 " inoremap <C-@> <C-x><C-o>
 " inoremap <Nul> <C-x><C-o>
 
-" tabで候補選択 (cf. neocomplete/cache.vim, neosnippet.vim)
-imap <expr><Tab>
-			\ pumvisible() ? "\<C-n>" :
-			\ neosnippet#expandable_or_jumpable() ?
-			\ "\<Plug>(neosnippet_expand_or_jump)" : "\<Tab>" 
-
-imap <expr><S-Tab>
-			\ pumvisible() ? "\<C-p>" :
-			\ neosnippet#expandable_or_jumpable() ?
-			\ "\<Plug>(neosnippet_expand_or_jump)" : "\<S-Tab>" 
-
-
