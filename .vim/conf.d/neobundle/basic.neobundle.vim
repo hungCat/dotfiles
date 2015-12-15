@@ -67,6 +67,7 @@ NeoBundle 'airblade/vim-rooter'
 
 " tags自動更新
 "NeoBundle 'soramugi/auto-ctags.vim'
+NeoBundle 'szw/vim-tags'
 
 " tagsリストを右側に表示
 NeoBundleLazy 'majutsushi/tagbar', {
