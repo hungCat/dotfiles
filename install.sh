@@ -8,6 +8,9 @@ readonly NEOBUNDLE_DIR="$BUNDLE_DIR/neobundle.vim"
 # dotfilesへのシンボリックリンクを貼る
 for file in `find $DOTFILES_DIR -maxdepth 1 -name '.*' -printf '%f\n'` ; do
 	if [ $file != ".git" ]; then
+		if [ ! -L $HOME_DIR/$file ]; then
+			rm -rf $HOME_DIR/$file
+		fi
 		ln -vnsf $DOTFILES_DIR/$file $HOME_DIR/$file
 	fi
 done
