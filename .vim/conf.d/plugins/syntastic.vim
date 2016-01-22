@@ -1,5 +1,5 @@
 
-if ! empty(neobundle#get("syntastic"))
+"if ! empty(neobundle#get("syntastic"))
 
 	""" Recommended settings
 	""" see https://github.com/scrooloose/syntastic#settings
@@ -18,7 +18,7 @@ if ! empty(neobundle#get("syntastic"))
 	let g:syntastic_c_check_header = 1
 	let g:syntastic_cpp_check_header = 1
 	let g:syntastic_cpp_compiler = "g++"
-	let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wno-unused-parameter -Winit-self -Wfloat-equal -wsign-compare" 
+	let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wno-unused-parameter -Winit-self -Wfloat-equal" 
 
 
 	" go設定
@@ -27,4 +27,4 @@ if ! empty(neobundle#get("syntastic"))
 	" python設定
 	let g:syntastic_python_python_exec = '/usr/bin/python3'
 
-endif
+"endif

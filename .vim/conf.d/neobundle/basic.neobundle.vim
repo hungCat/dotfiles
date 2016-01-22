@@ -55,7 +55,7 @@ NeoBundle 'scrooloose/syntastic'
 " :w sudo:piyo		sudo権限でpiyoに保存
 " :e sudo:%			sudo権限で開き直す
 NeoBundle 'sudo.vim'
-
+"
 " set paste and nopaste automatically
 NeoBundle 'ConradIrwin/vim-bracketed-paste'
 

@@ -16,8 +16,11 @@ endfunction
 " cppインクルードディレクトリ
 let g:myconfig.cpp_include_dirs = expand(exists("$VIM_CPP_INCLUDE_DIR") ? $VIM_CPP_INCLUDE_DIR : '')
 
+
+let g:myconfig.isWin = has('win95') || has('win16') || has('win32')
+
 " shell の設定
-if has('win95') || has('win16') || has('win32')
+if g:myconfig.isWin
 	set shell=C:\WINDOWS\system32\cmd.exe
 endif
 

@@ -57,3 +57,9 @@ alias dl='docker ps -l -q'
 grepfind () { find . -type f -name "$2" -print0 | xargs -0 grep "$1" ; }
 # I often can't recall what I named this alias, so make it work either way: 
 alias findgrep='grepfind'
+
+
+
+function duhoge () {
+    du -scm $1/* $1/.[^.]* | sort -rn
+}
