@@ -1,5 +1,6 @@
 
-if ! empty(neobundle#get("vim-marching"))
+
+if neobundle#tap('vim-marching')
 	" clang コマンドの設定
 
 	" オプションを追加する
@@ -25,7 +26,12 @@ if ! empty(neobundle#get("vim-marching"))
 		let g:marching_enable_neocomplete = 1
 	endif
 
-	" 補完中のワード挿入を禁止
-	imap <buffer> <C-x><C-o> <Plug>(marching_start_omni_complete)
 
+	function neobundle#hooks.on_source(_)
+		" 補完中のワード挿入を禁止
+		imap <buffer> <C-x><C-o> <Plug>(marching_start_omni_complete)
+
+	endfunction
+
+	call neobundle#untap()
 endif

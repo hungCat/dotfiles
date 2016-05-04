@@ -7,6 +7,7 @@ xnoremap j gj
 nnoremap k gk
 onoremap k gk
 xnoremap k gk
+
 " 行頭行末への移動をShiftをつかって行えるように
 nnoremap <S-h> ^
 nnoremap <S-j> }

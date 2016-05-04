@@ -25,6 +25,10 @@ if ! empty(neobundle#get("vim-quickrun"))
 				\ "command"   : "make",
 				\ "exec" : "%c %o run %a",
 				\}
+	let g:quickrun_config.go = {
+				\ 'command': 'go',
+				\ 'exec': '%c run %s',
+				\ }
 
 	" interrapt quickrun
 	nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"

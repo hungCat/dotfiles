@@ -13,13 +13,16 @@ NeoBundleLazy 'hail2u/vim-css3-syntax',{
 			\"autoload" : {"filetypes" :[ "html", "css" ]}
 			\}
 " JavaScript
-NeoBundleLazy 'pangloss/vim-javascript',{
-			\"autoload" : {"filetypes" :[ "html", "js" ]}
+NeoBundleLazy 'jelera/vim-javascript-syntax',{
+			\"autoload" : {"filetypes" :[ "html", "javascript" ]}
 			\}
+"NeoBundleLazy 'pangloss/vim-javascript',{
+"			\"autoload" : {"filetypes" :[ "html", "javascript" ]}
+"			\}
+
 " JS libraries
 NeoBundleLazy 'othree/javascript-libraries-syntax.vim',{
-			\"autoload" : {"filetypes" :[ "html", "js" ]}
+			\"autoload" : {"filetypes" :[ "html", "javascript" ]}
 			\}
 let g:used_javascript_libs = 'jquery'
-
 
