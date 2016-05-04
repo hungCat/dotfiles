@@ -4,7 +4,7 @@ echo %0: Running.
 set PWD=%~dp0
 cd %PWD%
 
-if "%HOME%" equ "" (
+if "%HOMEPATH%" equ "" (
   echo %0: Error. Please set HOME.
   goto FAIL
 )
@@ -18,11 +18,11 @@ for /F %%f in ('dir /B ".?*"') do (
   ) else if "%%f" equ ".gitmodules" (
     rem;
   ) else (
-    echo %0: symlink %HOME%\%%f -^> %PWD%%%f
+    echo %0: symlink %HOMEPATH%\%%f -^> %PWD%%%f
     if exist %PWD%%%f\ (
-      mklink /d %HOME%\%%f "%PWD%%%f"
+      mklink /d %HOMEPATH%\%%f "%PWD%%%f"
     ) else (
-      mklink %HOME%\%%f "%PWD%%%f"
+      mklink %HOMEPATH%\%%f "%PWD%%%f"
     )
   )
 )

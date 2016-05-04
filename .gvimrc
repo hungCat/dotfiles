@@ -12,4 +12,4 @@ catch
 endtry
 "highlight LineNr ctermfg=darkgrey
 
-let g:myconfig.loaded = "basic.syntax"
+
