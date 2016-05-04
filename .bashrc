@@ -97,3 +97,5 @@ ulimit -c 0
 
 # ctrl+s で出力がロックされてしまうのを防ぐ
 stty stop undef
+
+[[ -s "/home/hungcat/.gvm/scripts/gvm" ]] && source "/home/hungcat/.gvm/scripts/gvm"

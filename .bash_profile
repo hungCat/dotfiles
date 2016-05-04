@@ -7,7 +7,7 @@ export CPATH=$CPATH:~/.local/include			# gcc/g++ include path
 export PAGER=less					# man
 export EDITOR='/usr/bin/vim'		# visudo
 # lessが便利に
-export LESS='-X -i -P ?f%f:(stdin).  ?lb%lb?L/%L..  [?eEOF:?pb%pb\%..]'
+export LESS='-R -X -i -P ?f%f:(stdin).  ?lb%lb?L/%L..  [?eEOF:?pb%pb\%..]'
 # locales
 #export LANG=ja_JP.UTF8				# char code
 export LANG=en_US.UTF8				# char code
@@ -21,7 +21,11 @@ unset SSH_ASKPASS
 
 # for golang
 export GOROOT=/usr/local/go
+<<<<<<< HEAD
 export GOPATH=$HOME/workspace/go
+=======
+export GOPATH=$HOME/workspace/prog/go
+>>>>>>> 97169fc8a24623a3477c258f3701677069d07872
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin:$GOBIN
 
