@@ -9,7 +9,8 @@ export EDITOR='/usr/bin/vim'		# visudo
 # lessが便利に
 export LESS='-X -i -P ?f%f:(stdin).  ?lb%lb?L/%L..  [?eEOF:?pb%pb\%..]'
 # locales
-export LANG=ja_JP.UTF8				# char code
+#export LANG=ja_JP.UTF8				# char code
+export LANG=en_US.UTF8				# char code
 export LC_ALL=	  					# char code
 #export LC_MESSAGES=ja_JP.UTF8		# char code
 # GUIに指定されている場合はunsetすべき
@@ -19,10 +20,10 @@ unset SSH_ASKPASS
 #export CYGWIN="error_start=dumper.exe"
 
 # for golang
-#export GOROOT=/usr/local/go1.4.2
-#export GOPATH=$HOME/prog/go
-#export GOBIN=$GOPATH/bin
-#export PATH=$PATH:$GOROOT/bin:$GOBIN
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/workspace/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin:$GOBIN
 
 
 # source the users bashrc if it exists

@@ -22,3 +22,5 @@ if has('win95') || has('win16') || has('win32')
 endif
 
 
+let g:myconfig.isLoaded = {}
+let g:myconfig.isLoaded.main = "Okay!"

@@ -73,5 +73,3 @@ NeoBundle 'szw/vim-tags'
 NeoBundleLazy 'majutsushi/tagbar', {
 			\ 'autoload': { 'commands': ['TagbarToggle'] }
 			\}
-
-
