@@ -21,11 +21,7 @@ unset SSH_ASKPASS
 
 # for golang
 export GOROOT=/usr/local/go
-<<<<<<< HEAD
-export GOPATH=$HOME/workspace/go
-=======
 export GOPATH=$HOME/workspace/prog/go
->>>>>>> 97169fc8a24623a3477c258f3701677069d07872
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin:$GOBIN
 
