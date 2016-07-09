@@ -10,14 +10,14 @@ endif
 if g:myconfig.is_installed('neobundle.vim')
 	call neobundle#begin()
 
-	if neobundle#load_cache()
+"	if neobundle#load_cache()
 		" NeoBundle plugins
 		NeoBundleFetch 'Shougo/neobundle.vim'
 		runtime! conf.d/neobundle/*.vim
 		NeoBundleCheck
 		" check if NeoBundle plugins have installed
-		NeoBundleSaveCache
-	endif
+"		NeoBundleSaveCache
+"	endif
 
 	call neobundle#end()
 	filetype plugin indent on       " restore filetype

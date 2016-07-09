@@ -1,8 +1,9 @@
 
-if neobundle#is_installed('neosnippet.vim')
+if neobundle#is_installed('neosnippet')
 
-	let s:my_snippet = '~/.vim/snippet/'
+	let s:my_snippet = '~/.vim/snippets/'
 	let g:neosnippet#snippets_directory = s:my_snippet
+    "let g:go_snippet_engine = "neosnippet"
 
 	" key binding
 

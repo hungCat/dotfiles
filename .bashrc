@@ -98,4 +98,10 @@ ulimit -c 0
 # ctrl+s で出力がロックされてしまうのを防ぐ
 stty stop undef
 
-[[ -s "/home/hungcat/.gvm/scripts/gvm" ]] && source "/home/hungcat/.gvm/scripts/gvm"
+# golang version manager
+export GVM_DIR="/home/hungcat/.gvm"
+[[ -s "$GVM_DIR/scripts/gvm" ]] && source "$GVM_DIR/scripts/gvm"
+
+# node version manager
+export NVM_DIR="/home/hungcat/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -25,6 +25,9 @@ export GOPATH=$HOME/workspace/prog/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin:$GOBIN
 
+# for nvim
+export XDG_CONFIG_HOME=$HOME/.config
+export TERM=xterm-256color
 
 # source the users bashrc if it exists
 if [ -f ~/.bashrc ] ; then
