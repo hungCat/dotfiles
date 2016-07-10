@@ -5,9 +5,13 @@ VIMRC=$HOME/.vimrc
 
 if [ ! -e $VIMRC ]; then
 	VIMRC=$HOME/.vim/vimrc
+    if [ ! -e $VIMRC ]; then
+        echo "No vimrc."
+        exit 1
+    fi
 fi
 
-echo 'Start NeoBundleInstall.'
+echo 'Start NeoBundleUpdate.'
 
 while read line; do
 	# ブラックリストでチェック

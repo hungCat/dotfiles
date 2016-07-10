@@ -1,18 +1,19 @@
 # call this when I logged in.
 
 # environmental variables
-export PATH=$PATH:/sbin:/usr/sbin:~/.local/bin	# path
-export LIBRARY_PATH=$LIBRARY_PATH:~/.local/lib	# gcc/g++ lib path
-export CPATH=$CPATH:~/.local/include			# gcc/g++ include path
-export PAGER=less					# man
-export EDITOR='/usr/bin/vim'		# visudo
+export PATH=$PATH:/sbin:/usr/sbin:~/.local/bin  # path
+export LIBRARY_PATH=$LIBRARY_PATH:~/.local/lib  # gcc/g++ lib path
+export CPATH=$CPATH:~/.local/include            # gcc/g++ include path
+export PAGER="less -R"                          # man
+export EDITOR=vim                               # visudo
+export TERM=xterm-256color
 # lessが便利に
 export LESS='-R -X -i -P ?f%f:(stdin).  ?lb%lb?L/%L..  [?eEOF:?pb%pb\%..]'
 # locales
-#export LANG=ja_JP.UTF8				# char code
-export LANG=en_US.UTF8				# char code
-export LC_ALL=	  					# char code
-#export LC_MESSAGES=ja_JP.UTF8		# char code
+export LANG=en_US.UTF8                  # char code
+#export LANG=ja_JP.UTF8                  # char code
+export LC_ALL=                          # char code
+#export LC_MESSAGES=ja_JP.UTF8          # char code
 # GUIに指定されている場合はunsetすべき
 unset SSH_ASKPASS
 
@@ -27,11 +28,10 @@ export PATH=$PATH:$GOROOT/bin:$GOBIN
 
 # for nvim
 export XDG_CONFIG_HOME=$HOME/.config
-export TERM=xterm-256color
 
 # source the users bashrc if it exists
 if [ -f ~/.bashrc ] ; then
-  source ~/.bashrc
+    source ~/.bashrc
 fi
 
 
