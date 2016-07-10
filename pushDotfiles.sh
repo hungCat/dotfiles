@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. $HOME/.tools/myfunctions
+. .tools/myfunctions
 
 readonly BEFORE_DIR=$(pwd)
 
