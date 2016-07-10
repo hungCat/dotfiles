@@ -1,4 +1,4 @@
 /.vim/bundle/*
 .*.un~
-/.config
+/.config/*
 !/.config/nvim

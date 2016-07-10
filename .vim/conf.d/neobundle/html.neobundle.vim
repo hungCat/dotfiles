@@ -38,13 +38,3 @@ NeoBundleLazy 'othree/javascript-libraries-syntax.vim',{
 			\}
 let g:used_javascript_libs = 'jquery'
 
-
-" sass autocomplie
-NeoBundleLazy 'AtsushiM/search-parent.vim', {
-\ 'autoload' : {
-\   'filetypes' : ['scss', 'sass'] }
-\}
-NeoBundleLazy 'AtsushiM/sass-compile.vim', {
-\ 'autoload' : {
-\   'filetypes' : ['scss', 'sass'] }
-\}
