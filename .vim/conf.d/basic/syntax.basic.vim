@@ -10,6 +10,6 @@ try
 catch
 	colorscheme default
 endtry
-"highlight LineNr ctermfg=darkgrey
+highlight LineNr ctermfg=darkgrey
 
 let g:myconfig.loaded = "basic.syntax"

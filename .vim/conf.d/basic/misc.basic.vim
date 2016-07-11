@@ -59,7 +59,9 @@ set gdefault	"置換の時 g オプションをデフォルトで有効にする
 " beep"{{{
 " ----------------------
 "ビープ音すべてを無効にする
-set visualbell t_vb=
+if !has('nvim')
+    set visualbell t_vb=
+endif
 set noerrorbells		"エラーメッセージの表示時にビープを鳴らさない
 
 "}}}
