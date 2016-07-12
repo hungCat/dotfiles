@@ -26,7 +26,6 @@ NeoBundleLazy has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache', {
 			\}
 
 " スニペット補完プラグイン
-"NeoBundleLazy 'Shougo/neosnippet.vim', {
 NeoBundleLazy 'Shougo/neosnippet', {
 			\  'autoload' : {'insert' : 1}
 			\}
@@ -41,7 +40,6 @@ NeoBundleLazy 'Shougo/neosnippet-snippets', {
 NeoBundle 'w0ng/vim-hybrid'
 
 " 括弧自動閉じ
-"NeoBundle 'cohama/lexima.vim'
 NeoBundleLazy 'cohama/lexima.vim', {
 			\  'autoload' : {'insert' : 1}
 			\}
@@ -70,7 +68,6 @@ NeoBundle 'kana/vim-submode'
 NeoBundle 'airblade/vim-rooter'
 
 " tags自動更新
-"NeoBundle 'soramugi/auto-ctags.vim'
 NeoBundle 'szw/vim-tags'
 
 " tagsリストを右側に表示

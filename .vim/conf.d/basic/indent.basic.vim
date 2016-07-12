@@ -10,5 +10,5 @@ set cindent			" C styleのオートインデント
 "set cinoptions=:0,N-s,l1,g0,t0,(0,j1,J1
 
 " for JavaScript
-let g:SimpleJsIndenter_BriefMode = 1
+"let g:SimpleJsIndenter_BriefMode = 1
 

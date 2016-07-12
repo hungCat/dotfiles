@@ -25,7 +25,7 @@ augroup vimfiler
     "autocmd VimEnter * if !argc() | VimFiler | endif
 
     " press sf to return 
-    autocmd FileType vimfiler nmap <silent><buffer>sf <C-w><C-w>
+    autocmd FileType vimfiler nmap <silent><buffer>sf <C-w><C-p>
 
 augroup END
 
