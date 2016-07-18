@@ -73,48 +73,18 @@ nnoremap sQ :<C-u>bd<CR>
 nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
 nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
 
+" Map for toggle
+nnoremap <silent> s] :TagbarToggle<CR>
+
 " plugins
-
-try
-
-  if dein#tap('vim-submode')
-
-    " 実行すべき関数
-    function! s:submode_on_source() abort
-      " windowの大きさ調整
-      call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
-      call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
-      call submode#enter_with('bufmove', 'n', '', 's+', '<C-w>+')
-      call submode#enter_with('bufmove', 'n', '', 's-', '<C-w>-')
-      call submode#map('bufmove', 'n', '', '>', '<C-w>>')
-      call submode#map('bufmove', 'n', '', '<', '<C-w><')
-      call submode#map('bufmove', 'n', '', '+', '<C-w>+')
-      call submode#map('bufmove', 'n', '', '-', '<C-w>-')
-
-    endfunction
-
-    " g:dein#name にはプラグイン名が入る
-    execute 'autocmd MyAutoCmd User' 'dein#source#' . g:dein#name
-          \ 'call s:submode_on_source()'
-  endif
-
-
-  if dein#tap('tagbar')
-
-    " 実行すべき関数
-    function! s:tagbar_on_source() abort
-      " Map for toggle
-      nnoremap <silent> s] :TagbarToggle<CR>
-    endfunction
-
-    " g:dein#name にはプラグイン名が入る
-    execute 'autocmd MyAutoCmd User' 'dein#source#' . g:dein#name
-          \ 'call s:tagbar_on_source()'
-  endif
-
-catch /E117.*/
-endtry
-
+" 
+" [vim-submode]
+" ajust window
+" s>, s<, s+, s-
+"
+" [tagbar]
+" open tagbar
+" s]
 
 
 

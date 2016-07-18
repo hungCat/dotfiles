@@ -42,11 +42,6 @@ repo = 'vim-scripts/sudo.vim'
 
 
 
-# 連続したコマンドの入力補助
-[[plugins]]
-repo = 'kana/vim-submode'
-
-
 # プロジェクトのrootディレクトリを探す子
 [[plugins]]
 repo = 'airblade/vim-rooter'
@@ -106,11 +101,5 @@ on_ft = 'nginx'
 [[plugins]] # tex syntax
 repo = 'lervag/vimtex'
 on_ft = 'tex'
-
-[[plugins]]
-repo = 'nsf/gocode'
-rtp = 'vim'
-on_ft = 'go'
-
 
 
