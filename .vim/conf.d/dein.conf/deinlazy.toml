@@ -1,0 +1,164 @@
+
+
+
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+depends = 'neomru.vim'
+# TODO settings
+
+
+[[plugins]]
+repo = 'Shougo/vimfiler.vim'
+depends = 'unite.vim'
+on_event = 'BufEnter'
+hook_source = '''
+"source ~/dotfiles/newvimfiles/conf.d/dein.conf/plugins/vimfiler.vim
+call g:myconf.source_plugin_conf('vimfiler.vim')
+'''
+
+
+
+
+
+
+
+
+[[plugins]]
+repo = 'Shougo/neocomplcache.vim'
+depends = 'context_filetype.vim'
+if = "!has('lua')"
+on_event = 'InsertEnter'
+hook_source = '''
+let g:neocomplcache#enable_at_startup = 1
+call g:myconf.source_plugin_conf('neocomplcache.vim')
+"  source ~/.vim/rc/plugins/neocomplcache.rc.vim
+'''
+
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+depends = 'context_filetype.vim'
+if = "has('lua')"
+on_event = 'InsertEnter'
+hook_source = '''
+call g:myconf.source_plugin_conf('neocomplete.vim')
+'''
+
+[[plugins]]
+repo = 'Shougo/neoinclude.vim'
+on_if = 1
+
+
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+depends = ['neosnippet-snippets', 'context_filetype.vim']
+on_event = 'InsertCharPre'
+on_ft = 'snippet'
+hook_source = '''
+
+call g:myconf.source_plugin_conf('neosnippet.vim')
+
+"[dein] Error occurred while executing hook: neosnippet.vim
+"[dein] Vim(call):E716: Key not present in Dictionary: source_plugin_conf
+"source ~/.vim/rc/plugins/neosnippet.rc.vim
+
+'''
+
+
+
+
+[[plugins]] # カーソル位置のコンテキストに合わせてftを切り替える
+repo = 'osyo-manga/vim-precious'
+depends = ['context_filetype.vim']
+on_event = 'BufEnter'
+
+
+
+
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
+on_event = 'InsertEnter'
+hook_source = '''
+call g:myconf.source_plugin_conf('lexima.vim')
+'''
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+on_event = 'InsertEnter'
+hook_source = '''
+call g:myconf.source_plugin_conf('vim-quickrun.vim')
+'''
+
+[[plugins]]
+repo = 'scrooloose/syntastic'
+on_event = ['InsertEnter', 'BufWrite']
+hook_source = '''
+call g:myconf.source_plugin_conf('syntastic.vim')
+'''
+
+# set paste and nopaste automatically
+[[plugins]]
+repo = 'ConradIrwin/vim-bracketed-paste'
+on_event = 'InsertEnter'
+
+
+[[plugins]]
+repo = 'majutsushi/tagbar'
+on_cmd = 'TagbarToggle'
+hook_source = '''
+call g:myconf.source_plugin_conf('tagbar.vim')
+'''
+
+
+
+
+
+
+
+
+
+
+# cpp
+
+[[plugins]]
+repo = 'osyo-manga/vim-marching'
+if = "!has('nvim')"
+on_ft = ['c', 'cpp']
+
+[[plugins]]
+repo = 'rhysd/vim-clang-format'
+on_ft = ['c', 'cpp']
+
+
+# go
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = 'go'
+hook_source = '''
+exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
+'''
+
+# html
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = 'html'
+
+# javascript
+
+
+# dependence
+
+[[plugins]] # detect filetype in context
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]] # file history those of opened by vim
+repo = 'Shougo/neomru.vim'
+on_if = 1
+
+
+
+
+
+

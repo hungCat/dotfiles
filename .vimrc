@@ -1,2 +1,1 @@
-set runtimepath^=~/.vim
-runtime! conf.d/*.vim
+execute 'source' fnamemodify(expand('<sfile>'), ':h').'/.vim/conf.d/vimrc'

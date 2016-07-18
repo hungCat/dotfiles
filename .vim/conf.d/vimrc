@@ -1,0 +1,40 @@
+" vimrc
+
+if &compatible
+  set nocompatible
+endif
+
+
+let s:current_dir = fnamemodify(expand('<sfile>'), ':h')
+function! s:source_conf(path) abort "{{{
+  execute 'source' fnameescape(s:current_dir . '/' . a:path)
+endfunction "}}}
+
+
+" Set augroup.
+augroup MyAutoCmd
+  autocmd!
+augroup END
+
+
+if has('vim_starting')
+  call s:source_conf('init.conf.vim')
+endif
+
+" dein
+call s:source_conf('dein_setup.conf.vim')
+call s:source_conf('dein.conf.vim')
+
+" general
+call s:source_conf('edit.conf.vim')
+call s:source_conf('view.conf.vim')
+call s:source_conf('keymappings.conf.vim')
+call s:source_conf('commands.conf.vim')
+
+" neovim
+if has('nvim')
+  call s:source_conf('neovim.conf.vim')
+endif
+
+set secure
+
