@@ -43,9 +43,8 @@ if !exists('g:neocomplcache_force_omni_patterns')
 endif
 "let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 let g:neocomplcache_force_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-let g:neocomplcache_force_omni_patterns.c = '\h\w*\%(\.\|->\)'
-let g:neocomplcache_force_omni_patterns.cpp = '\h\w*\%(\.\|->\|::\)'
-let g:neocomplcache_force_omni_patterns.h = '\h\w*\%(\.\|->\|::\)'
+let g:neocomplcache_force_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 let g:neocomplcache_force_omni_patterns.go = '\h\w*\.'
 
 
