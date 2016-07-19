@@ -6,7 +6,7 @@
 function! s:install_dein(dein_dir)
   " gitの有無
   if !executable("git")
-    if confirm('No git. Install now?', "Yes\nNo", 2) == 1
+    if !has('kaoriya') && confirm('No git. Install now?', "Yes\nNo", 2) == 1
       if executable("yum") 
         execute "!sudo yum -y install git"
       elseif executable("apt-get")
@@ -21,7 +21,7 @@ function! s:install_dein(dein_dir)
   endif
 
   " install dein
-  if confirm('Install dein now?', "Yes\nNo", 2) == 1
+  if has('kaoriya') || confirm('Install dein now?', "Yes\nNo", 2) == 1
     if !isdirectory(a:dein_dir)
       call mkdir(a:dein_dir, "p")
     endif
@@ -68,7 +68,7 @@ if s:dein_dir == ''
   endif
 endif
 if &runtimepath !~ '/dein.vim'
-  execute 'set runtimepath^=' . substitute(fnamemodify(s:dein_dir, ':p'), '/$', '', '')
+  execute 'set runtimepath^=' . substitute(fnamemodify(s:dein_dir, ':p'), '\(/\|\\\)$', '', '')
 endif
 
 

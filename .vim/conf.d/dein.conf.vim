@@ -38,22 +38,23 @@ if dein#load_state(s:dein_path)
   call dein#save_state()
 endif
 
-
-if !has('nvim') && dein#check_install(['vimproc'])
-  if confirm('Install vimproc?', "Yes\nNo", 2) == 1
-    call dein#install(['vimproc'])
-  endif
-endif
-if dein#check_install()
-  " Installation check.
-  if confirm('Install dein plugins?', "Yes\nNo", 2) == 1
-    call dein#install()
-  endif
-endif
-
 if !has('vim_starting')
+
+  if !has('nvim') && dein#check_install(['vimproc.vim'])
+    if confirm('Install vimproc?', "Yes\nNo", 2) == 1
+      call dein#install(['vimproc.vim'])
+    endif
+  endif
+  if dein#check_install()
+    " Installation check.
+    if confirm('Install dein plugins?', "Yes\nNo", 2) == 1
+      call dein#install()
+    endif
+  endif
+
   call dein#call_hook('source')
   call dein#call_hook('post_source')
+  syntax enable
 endif
 
 filetype plugin indent on
