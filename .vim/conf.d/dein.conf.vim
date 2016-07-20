@@ -15,6 +15,9 @@ endfunction
 if !isdirectory(s:dein_path)
   finish
 endif
+if g:myconf.isWin && has('nvim') && has('vim_starting')
+  finish
+endif
 
 if dein#load_state(s:dein_path)
   call dein#begin(s:dein_path, [s:here]
@@ -38,23 +41,27 @@ if dein#load_state(s:dein_path)
   call dein#save_state()
 endif
 
-
-if !has('nvim') && dein#check_install(['vimproc'])
-  if confirm('Install vimproc?', "Yes\nNo", 2) == 1
-    call dein#install(['vimproc'])
-  endif
-endif
-if dein#check_install()
-  " Installation check.
-  if confirm('Install dein plugins?', "Yes\nNo", 2) == 1
-    call dein#install()
-  endif
-endif
-
 if !has('vim_starting')
-  call dein#call_hook('source')
-  call dein#call_hook('post_source')
-endif
 
-filetype plugin indent on
+  if !has('nvim') && dein#check_install(['vimproc.vim'])
+    if exists('g:dein#install_max_processes')
+      let s:tmp = g:dein#install_max_processes
+    endif
+    let g:dein#install_max_processes = 1
+    if confirm('Install vimproc?', "Yes\nNo", 2) == 1
+      call dein#install(['vimproc.vim'])
+    endif
+    if s:tmp
+      let g:dein#install_max_processes = s:tmp
+    else
+      unlet g:dein#install_max_processes
+    endif
+  endif
+  if dein#check_install()
+    " Installation check.
+    if confirm('Install dein plugins?', "Yes\nNo", 2) == 1
+      call dein#install()
+    endif
+  endif
+endif
 

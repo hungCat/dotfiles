@@ -6,7 +6,7 @@ let g:myconf = {}
 
 let g:myconf.cache = substitute(fnamemodify(
       \ empty($XDG_CACHE_HOME) ? '~/.cache' : $XDG_CACHE_HOME
-      \ , ':p'), '/$', '', '')
+      \ , ':p'), '\(/\|\\\)$', '', '')
 
 let g:myconf.isWin = has('win32') || has('win64')
 " has('win95') || has('win16') || 
@@ -14,6 +14,7 @@ let g:myconf.isWin = has('win32') || has('win64')
 " shell の設定
 if g:myconf.isWin
 	set shell=C:\WINDOWS\system32\cmd.exe
+  set runtimepath+=$HOME/.vim,$HOME/.vim/after
 endif
 
 " Use English interface.

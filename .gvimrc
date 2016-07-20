@@ -12,4 +12,7 @@ catch
 endtry
 "highlight LineNr ctermfg=darkgrey
 
+" font
+set guifont=Consolas:h11:cANSI:qDRAFT
+
 
