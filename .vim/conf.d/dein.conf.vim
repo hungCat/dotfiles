@@ -41,7 +41,7 @@ if dein#load_state(s:dein_path)
   call dein#save_state()
 endif
 
-if !has('vim_starting')
+if !(g:myconf.isWin && has('vim_starting'))
 
   if !has('nvim') && dein#check_install(['vimproc.vim'])
     if exists('g:dein#install_max_processes')
