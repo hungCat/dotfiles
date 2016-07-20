@@ -3,10 +3,10 @@
 " Load dein.
 "
 
-function! s:install_dein(dein_dir)
+function! s:install_dein(dein_dir) abort
   " gitの有無
   if !executable("git")
-    if !has('kaoriya') && confirm('No git. Install now?', "Yes\nNo", 2) == 1
+    if !g:myconf.isWin && confirm('No git. Install now?', "Yes\nNo", 2) == 1
       if executable("yum") 
         execute "!sudo yum -y install git"
       elseif executable("apt-get")
@@ -21,7 +21,7 @@ function! s:install_dein(dein_dir)
   endif
 
   " install dein
-  if has('kaoriya') || confirm('Install dein now?', "Yes\nNo", 2) == 1
+  if g:myconf.isWin || confirm('Install dein now?', "Yes\nNo", 2) == 1
     if !isdirectory(a:dein_dir)
       call mkdir(a:dein_dir, "p")
     endif

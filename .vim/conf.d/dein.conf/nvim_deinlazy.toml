@@ -27,3 +27,7 @@ hook_source = '''
 let g:deoplete#sources#clang#libclang_path = '/usr/lib64/llvm/libclang.so'
 let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
 '''
+
+[[plugins]]
+repo = 'equalsraf/neovim-gui-shim'
+if = 'g:myconf.isWin'

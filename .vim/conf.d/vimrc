@@ -25,6 +25,15 @@ endif
 call s:source_conf('dein_setup.conf.vim')
 call s:source_conf('dein.conf.vim')
 
+if !has('vim_starting')
+  call dein#call_hook('source')
+  call dein#call_hook('post_source')
+  syntax enable
+endif
+
+filetype plugin indent on
+
+
 " general
 call s:source_conf('edit.conf.vim')
 call s:source_conf('view.conf.vim')

@@ -12,7 +12,7 @@ autocmd BufLeave term://* stopinsert
 "set clipboard+=autoselect
 
 " ssh接続中はマウス無効化
-if !exists('$DISPLAY') || $TERM=~'^\(xterm\|vt\)'
+if !g:myconf.isWin && (!exists('$DISPLAY') || $TERM=~'^\(xterm\|vt\)')
   set mouse=""
 endif
 
