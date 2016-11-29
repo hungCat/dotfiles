@@ -14,6 +14,7 @@ export LANG=en_US.UTF8                  # char code
 #export LANG=ja_JP.UTF8                  # char code
 export LC_ALL=                          # char code
 #export LC_MESSAGES=ja_JP.UTF8          # char code
+export OUTPUT_CHARSET=utf-8
 # GUIに指定されている場合はunsetすべき
 unset SSH_ASKPASS
 

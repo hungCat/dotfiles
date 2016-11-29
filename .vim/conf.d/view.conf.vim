@@ -34,6 +34,7 @@ set fileencodings=utf-8,cp932
 set title
 set linespace=0        " 行間
 
+
 " コマンド実行中は再描画しない
 set lazyredraw
 
