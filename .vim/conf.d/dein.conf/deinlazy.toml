@@ -17,6 +17,18 @@ call g:myconf.source_plugin_conf('vimfiler.vim')
 '''
 
 
+[[plugins]]
+repo = 'Shougo/vimshell.vim'
+on_map = {n = '<Plug>'}
+on_if = "!has('nvim')"
+hook_add = 'nmap [Space]s  <Plug>(vimshell_switch)'
+hook_source = '''
+"source ~/dotfiles/newvimfiles/conf.d/dein.conf/plugins/vimshell.vim
+call g:myconf.source_plugin_conf('vimshell.vim')
+'''
+
+#[[plugins]]
+#repo = 'ujihisa/vimshell-ssh'
 
 
 
