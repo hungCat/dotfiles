@@ -13,7 +13,7 @@ endtry
 "highlight LineNr ctermfg=darkgrey
 
 " font
-set guifont=Consolas:h11
+set guifont=Ricty\ Diminished:h11
 set ambiwidth=double    " 2バイト半角対策
 
 set noundofile
