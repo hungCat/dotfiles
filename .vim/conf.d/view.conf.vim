@@ -28,8 +28,11 @@ set helpheight=999                 " ヘルプを画面いっぱいに開く
 set list                           " 不可視文字を表示
 " 不可視文字の表示記号指定
 set listchars=eol:~,tab:^\ ,extends:>,precedes:<,trail:.
+
+" 文字エンコーディング
 set encoding=utf-8
-set fileencodings=utf-8,cp932
+set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis,utf-8
+set fileformats=unix,dos,mac
 
 set title
 set linespace=0        " 行間
