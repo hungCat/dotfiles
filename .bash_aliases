@@ -14,7 +14,10 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # vim aliases
-alias vim=nvim
+#if ! uname | fgrep -q MINGW; then
+if type nvim &>/dev/null; then
+    alias vim=nvim
+fi
 alias vialias="vim $HOME/.bash_aliases"
 alias vibash="vim $HOME/.bashrc"
 alias vibashp="vim $HOME/.bash_profile"

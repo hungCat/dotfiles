@@ -15,9 +15,9 @@ endfunction
 if !isdirectory(s:dein_path)
   finish
 endif
-if g:myconf.isWin && has('nvim') && has('vim_starting')
-  finish
-endif
+"if g:myconf.isWin && has('nvim') && has('vim_starting')
+"  finish
+"endif
 
 if dein#load_state(s:dein_path)
   call dein#begin(s:dein_path, [s:here]
@@ -41,9 +41,11 @@ if dein#load_state(s:dein_path)
   call dein#save_state()
 endif
 
-if !(g:myconf.isWin && has('vim_starting'))
+"if !(g:myconf.isWin && has('vim_starting'))
 
-  if !has('nvim') && dein#check_install(['vimproc.vim'])
+"  if !has('nvim') && dein#check_install(['vimproc.vim'])
+  if 0
+    let s:tmp = ""
     if exists('g:dein#install_max_processes')
       let s:tmp = g:dein#install_max_processes
     endif
@@ -63,5 +65,5 @@ if !(g:myconf.isWin && has('vim_starting'))
       call dein#install()
     endif
   endif
-endif
+"endif
 

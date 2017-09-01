@@ -37,6 +37,7 @@ set fileformats=unix,dos,mac
 set title
 set linespace=0        " 行間
 
+
 " コマンド実行中は再描画しない
 set lazyredraw
 
