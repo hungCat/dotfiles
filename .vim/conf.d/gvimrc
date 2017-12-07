@@ -12,24 +12,30 @@ catch
 endtry
 "highlight LineNr ctermfg=darkgrey
 
-" font
-set guifont=Ricty\ Diminished:h11
-set ambiwidth=double    " 2バイト半角対策
+if !has('nvim')
 
+  " font
+  set guifont=Ricty\ Diminished:h11
+  set ambiwidth=double    " 2バイト半角対策
+  set visualbell t_vb=
+  set guioptions=eg
 
-" font
-try
+else
+
+  " font
+  try
     Guifont! Ricty Diminished:h11
-catch
+  catch
     Guifont! Consolas:h11
-endtry
-set ambiwidth=double    " 2バイト半角対策
+  endtry
+  set ambiwidth=double    " 2バイト半角対策
 
+  " clipboard
+  set mouse=a
+  set clipboard&
+  set clipboard^=unnamedplus
 
-" clipboard
-set mouse=a
-set clipboard&
-set clipboard^=unnamedplus
+endif
 
 
 

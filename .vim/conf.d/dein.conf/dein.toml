@@ -30,9 +30,6 @@ hook_add = '''
   au MyAutoCmd VimEnter * nested try | colorscheme hybrid | catch | endtry
 '''
 
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-
 # sudo.vim
 # usage:
 # vim sudo:hoge		sudo権限でhogeを編集
@@ -72,20 +69,29 @@ on_ft = 'javascript'
 # JS libraries syntax
 [[plugins]]
 repo = 'othree/javascript-libraries-syntax.vim'
-on_ft = ['javascript', 'typescript']
+#on_ft = ['javascript', 'typescript']
+on_ft = ['javascript']
 hook_add = '''
 let g:used_javascript_libs = 'jquery'
 '''
 
 [[plugins]]
 repo = 'jason0x43/vim-js-indent'
-on_ft = ['javascript', 'typescript']
+#on_ft = ['javascript', 'typescript']
+on_ft = ['javascript']
 hook_add = '''
 let g:js_indent_typescript = 1
 '''
 
 [[plugins]]
 repo = 'leafgarland/typescript-vim'
+on_ft = 'typescript'
+hook_add = '''
+"let g:typescript_indent_disable = 1
+'''
+
+[[plugins]]
+repo = 'Quramy/tsuquyomi'
 on_ft = 'typescript'
 
 [[plugins]] # toml syntax
@@ -100,11 +106,12 @@ on_ft = ['c', 'cpp']
 repo = 'evanmiller/nginx-vim-syntax'
 on_ft = 'nginx'
 
-[[plugins]] # tex syntax
-repo = 'lervag/vimtex'
-on_ft = 'tex'
-
 [[plugins]]
 repo = 'PProvost/vim-ps1'
 on_ft = 'ps1'
+
+
+
+
+
 

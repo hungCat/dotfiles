@@ -12,17 +12,11 @@ let g:myconf.isWin = has('win32') || has('win64')
 " has('win95') || has('win16') || 
 
 "" shell の設定
-"if g:myconf.isWin
-"	set shell=C:\WINDOWS\system32\cmd.exe
-"  set runtimepath+=$HOME/.vim,$HOME/.vim/after
-"endif
 if g:myconf.isWin
-	"set shell=C:\users\hungcat\items\programs\winpty-neovim-demo\build\winpty-agent.exe
-	"set runtimepath+=$HOME/items/programs/winpty-neovim-demo/build
-    "set shell=winpty-agent.exe
-  "set runtimepath+=$HOME/.vim,$HOME/.vim/after
+"	set shell=C:\WINDOWS\system32\cmd.exe
+  set runtimepath^=$HOME\.vim,$HOME\.vim\after
+  let g:hogehoge = "fugafuga"
 endif
-
 
 " Use English interface.
 language message C

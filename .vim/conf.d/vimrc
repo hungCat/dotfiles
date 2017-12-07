@@ -4,7 +4,6 @@ if &compatible
   set nocompatible
 endif
 
-
 let s:current_dir = fnamemodify(expand('<sfile>'), ':h')
 function! s:source_conf(path) abort "{{{
   execute 'source' fnameescape(s:current_dir . '/' . a:path)

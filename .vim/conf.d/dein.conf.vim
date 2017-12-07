@@ -28,7 +28,7 @@ call dein#begin(s:dein_path, [s:here]
 call dein#load_toml(s:toml . '/dein.toml', {'lazy': 0})
 call dein#load_toml(s:toml . '/deinlazy.toml', {'lazy' : 1})
 if has('nvim')
-  call dein#load_toml(s:toml . '/nvim_deinlazy.toml', {'lazy' : 1})
+  call dein#load_toml(s:toml . '/nvim_deinlazy.toml', {})
 endif
 " call dein#load_toml(s:toml . '/deinft.toml')
 
@@ -42,7 +42,7 @@ call dein#disable('neobundle.vim')
 call dein#end()
 call dein#save_state()
 
-if has('vim_starting') && dein#check_install()
+if !has('vim_starting') && dein#check_install()
   call dein#install()
 endif
 
