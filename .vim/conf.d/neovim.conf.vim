@@ -1,8 +1,8 @@
 " about terminal
 if !g:myconf.isWin
-    tnoremap <ESC> <C-\><C-n>
-    autocmd BufWinEnter,WinEnter term://* startinsert
-    autocmd BufLeave term://* stopinsert
+  tnoremap <ESC> <C-\><C-n>
+  autocmd BufWinEnter,WinEnter term://* startinsert
+  autocmd BufLeave term://* stopinsert
 endif
 
 " terminal true color
@@ -19,8 +19,9 @@ if !g:myconf.isWin && (!exists('$DISPLAY') || $TERM=~'^\(xterm\|vt\)')
 endif
 
 if g:myconf.isWin
-    let g:python_host_prog="C:/Users/hungcat/.pyenv/neovim2/Scripts/python.exe"
-    let g:python3_host_prog="C:/Users/hungcat/.pyenv/neovim3/Scripts/python.exe"
+  " using miniconda3
+  let g:python_host_prog="C:/tools/miniconda3/envs/neovim2/python.exe"
+  let g:python3_host_prog="C:/tools/miniconda3/envs/neovim3/python.exe"
 endif
 
 
